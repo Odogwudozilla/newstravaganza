@@ -1,0 +1,3 @@
+6b83c59	Chidozie Nnachor	Fri Sep 28 12:51:34 2018	Update Gemfile (moved Sqlite3 to development)
+b23b075	Chidozie Nnachor	Fri Sep 28 12:40:29 2018	Update Gemfile for Deployment (Heroku)
+e10e7af	Chidozie Nnachor	Fri Sep 28 12:23:13 2018	Initialize repository: First Commit
