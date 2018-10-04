@@ -38,6 +38,11 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+gem 'nokogiri', '~> 1.6', '>= 1.6.8'
+
+gem 'httparty', '~> 0.13.7'
+
+
 group :development, :test do
 # Use sqlite3 as the database for Active Record
   gem 'sqlite3'

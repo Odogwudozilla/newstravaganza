@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  status: MyString
+  totalresults: MyString
+  number: MyString
+  keyword: one
+
+two:
+  status: MyString
+  totalresults: MyString
+  number: MyString
+  keyword: two
