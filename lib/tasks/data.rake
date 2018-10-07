@@ -88,7 +88,7 @@ namespace :data do
 
         # insert item to db
         Source.create!(
-          identitiy: article['id'],
+          identity: article['id'],
           name: article['name'],
           category_id: category.id
         )
@@ -104,7 +104,7 @@ namespace :data do
 
           # insert item to db
           Source.create!(
-            identitiy: article['id'],
+            identity: article['id'],
             name: article['name'],
             category_id: category.id
           )
