@@ -125,9 +125,113 @@ namespace :data do
 
 
 
+
+# Pulls info from CSV and writes to the Continents table
+desc "Write to the Continents table"
+  task continents_seed: :environment do
+    unique_konti = []
+  
+    CSV.foreach("lib/assets/Countries and Continents data.csv", :headers =>true) do |row |
+      # parse values into an array
+      unique_konti <<  row[5]
+    end
+    # strip out unique values
+    unique_konti = unique_konti.uniq
+    # posts result to console
+    puts unique_konti
+    # Clear existing data if any
+    Continent.destroy_all
+
+    
+    unique_konti.each do | konti|
+      # insert item to db
+        Continent.create!(
+          name: konti
+        ) 
+      # send message to console
+      puts "Continent of #{konti} created \n\n"
+
+    end
+    puts '********* Continents Seeded from CSV file to database successfully! **************'
+  end
+  
+  # ------------------------------------------------------------------------------- #
+
+
+
+
+
+# Pulls info from CSV and writes to the Countries table
+  desc "Write to the Countries table"
+  task countries_seed: :environment do
+
+    # Clear existing data if any
+    Country.destroy_all
+
+    CSV.foreach("lib/assets/Countries and Continents data.csv", :headers =>true) do |row |
+
+      # retrieve continent with same name from db
+      kontinent = Continent.find_by(:name => row[5])
+
+      # insert item to db
+        Country.create!(
+          name: row[0],
+          code: row[1],
+          continent_id: kontinent.id
+
+        )
+
+        # send message to console
+      puts "Country #{row[0]} created with Continent as #{kontinent.name}\n\n"
+
+    end
+
+    puts "********* #{Country.count} Countries Seeded from CSV file to database successfully! **************"
+
+  end 
+# ------------------------------------------------------------------------------- #
+
+
+
+# Pulls info from API and writes to the Articles table
+  desc "Write to the Articles table"
+  task articles_seed: :environment do
+    
+    url = 'https://newsapi.org/v2/everything?q=%22Trump%22&from=2018-10-01&to=2018-10-07&pageSize=100&page=3&language=en&apiKey=4b87c3dde8444f4e843dc41ab00f5c18'
+    req = open(url)
+    response_body = req.read
+
+    serialized_object = JSON.parse(response_body)
+
+    # iterate through sources printing properties
+    serialized_object['articles'].each do |sunny|
+      puts sunny["author"]
+      puts "***"
+      puts sunny["title"]
+      puts "***"
+      puts sunny["description"]
+      puts "***"
+      puts sunny["url"]
+      puts "***"
+      puts sunny["urlToImage"]
+      puts "***"
+      puts sunny["publishedAt"]
+      puts "***"
+      puts sunny["content"]
+      puts "***"
+      puts sunny["language"]
+      puts "%%%%%%%%%%%%%"
+    end
+    puts serialized_object['articles'].count
+
+  end 
+# ------------------------------------------------------------------------------- #
+
+
+
+
 # to run both the category_seed and source_seed rake tasks at same time
   desc "Run both the category_seed and source_seed rake tasks"
-  task :all => [:category_seed, :source_seed]
-
+  task :all => [:category_seed, :source_seed, :continents_seed, :countries_seed]
 
 end
