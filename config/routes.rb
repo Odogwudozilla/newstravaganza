@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :countries
+  resources :continents
   resources :categories
   resources :sources
   root 'under_construction#index'

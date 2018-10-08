@@ -1,3 +1,9 @@
+04eeb1a	Chidozie Nnachor	Mon Oct 8 00:23:44 2018	Seeding the Continents and Countries tables
+98c1a64	Chidozie Nnachor	Sun Oct 7 17:33:34 2018	Correcting the identitiy column name (sources)
+2261ac3	Chidozie Nnachor	Sun Oct 7 15:11:41 2018	Rake for seeding the Categories and Sources table from API
+77e5baf	MAULUDATU	Thu Oct 4 13:26:35 2018	Created Data Models
+65ddb08	Chidozie Nnachor	Fri Sep 28 13:41:19 2018	Under_Construction homepage
+262f0ae	Chidozie Nnachor	Fri Sep 28 13:00:34 2018	Update Gemfile (Bootstrap, JQuery)
 6b83c59	Chidozie Nnachor	Fri Sep 28 12:51:34 2018	Update Gemfile (moved Sqlite3 to development)
 b23b075	Chidozie Nnachor	Fri Sep 28 12:40:29 2018	Update Gemfile for Deployment (Heroku)
 e10e7af	Chidozie Nnachor	Fri Sep 28 12:23:13 2018	Initialize repository: First Commit
