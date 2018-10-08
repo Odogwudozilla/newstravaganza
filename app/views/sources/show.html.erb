@@ -1,4 +1,20 @@
-<p id="notice"><%= notice %></p>
+<p id="notice">
+  <%= notice %>
+</p>
+<p>
+  <strong>Identity:</strong>
+  <%= @source.identity %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @source.name %>
+</p>
+
+<p>
+  <strong>Ship:</strong>
+  <%= @source.category.name %>
+</p>
 
 <%= link_to 'Edit', edit_source_path(@source) %> |
 <%= link_to 'Back', sources_path %>
