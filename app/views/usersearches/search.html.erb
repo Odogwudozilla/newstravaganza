@@ -1,0 +1,21 @@
+<h1>News</h1>
+<% if @results["status"] = "OK" %>
+
+<p>Search Returns <%= @results["totalResults"] %>  articles </p>
+
+<% for i in @results["articles"] do %>
+
+       <h4><%= i['title'] %></h4>
+      <p>
+
+          <% source = i["source"] %><br/>
+          <%= source["name"] %><br/>
+          <%= i["author"] %><br/>
+          <%= i["content"] %><br/>
+          <br/>
+      </p>
+<% end %>
+
+<% else %>
+  <p>Search error </p>
+<% end %>

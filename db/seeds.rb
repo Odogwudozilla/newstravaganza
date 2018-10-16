@@ -44,6 +44,6 @@ def seed_countries
 
 end
 
-# seed_continents
+   seed_continents
 
-  seed_countries
+  # seed_countries

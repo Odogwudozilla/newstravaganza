@@ -1,0 +1,24 @@
+
+<%= form_for @usersearch do |f| %>
+  <div class="field">
+    <%= f.label_tag :keyword  %><br />
+    <%= f.text_field_tag :keyword , :required => true %>
+  </div>
+
+  <div class="field">
+    <%= f.label_tag :category_id %><br />
+    <%= f.collection_select_tag :category_id, Category.order(:name), :id, :name, include_blank: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label_tag :country_id %><br />
+    <%= f.collection_select_tag :country_id, Country.order(:name), :id, :name, include_blank: true %>
+  </div>
+  <div class="field">
+    <%= f.label_tag :language_id %><br />
+    <%= f.collection_select_tag :language_id, Language.order(:name), :id, :name, include_blank: true %>
+  </div>
+
+
+  <div class="actions"><%= f.submit_tag "Search" %></div>
+<% end %>

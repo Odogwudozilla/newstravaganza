@@ -1,3 +1,3 @@
 class Category < ApplicationRecord
-  has_many :sources, :dependent => :destroy
+   has_many :news_sources, :dependent => :destroy
 end
