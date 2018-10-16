@@ -196,33 +196,44 @@ desc "Write to the Continents table"
 # Pulls info from API and writes to the Articles table
   desc "Write to the Articles table"
   task articles_seed: :environment do
+
+    # from_week = Date.strptime('2001-02-03', '%Y-%m-%d')
+
+    # puts from_week
+
+    to_week = Date.today
+    from_week = 7.days.before(to_week)
+
+    puts from_week.to_s
     
-    url = 'https://newsapi.org/v2/everything?q=%22Trump%22&from=2018-10-01&to=2018-10-07&pageSize=100&page=3&language=en&apiKey=4b87c3dde8444f4e843dc41ab00f5c18'
-    req = open(url)
-    response_body = req.read
+    urle = "https://newsapi.org/v2/everything?q=%22Trump%22&from=#{from_week}&to=#{to_week}&pageSize=100&page=3&language=en&apiKey=4b87c3dde8444f4e843dc41ab00f5c18"
 
-    serialized_object = JSON.parse(response_body)
+    puts urle 
+    # req = open(url)
+    # response_body = req.read
 
-    # iterate through sources printing properties
-    serialized_object['articles'].each do |sunny|
-      puts sunny["author"]
-      puts "***"
-      puts sunny["title"]
-      puts "***"
-      puts sunny["description"]
-      puts "***"
-      puts sunny["url"]
-      puts "***"
-      puts sunny["urlToImage"]
-      puts "***"
-      puts sunny["publishedAt"]
-      puts "***"
-      puts sunny["content"]
-      puts "***"
-      puts sunny["language"]
-      puts "%%%%%%%%%%%%%"
-    end
-    puts serialized_object['articles'].count
+    # serialized_object = JSON.parse(response_body)
+
+    # # iterate through sources printing properties
+    # serialized_object['articles'].each do |sunny|
+    #   puts sunny["author"]
+    #   puts "***"
+    #   puts sunny["title"]
+    #   puts "***"
+    #   puts sunny["description"]
+    #   puts "***"
+    #   puts sunny["url"]
+    #   puts "***"
+    #   puts sunny["urlToImage"]
+    #   puts "***"
+    #   puts sunny["publishedAt"]
+    #   puts "***"
+    #   puts sunny["content"]
+    #   puts "***"
+    #   puts sunny["language"]
+    #   puts "%%%%%%%%%%%%%"
+    # end
+    # puts serialized_object['articles'].count
 
   end 
 # ------------------------------------------------------------------------------- #
