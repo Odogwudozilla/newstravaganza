@@ -202,28 +202,43 @@ desc "Write to the Continents table"
     req = open(url)
     response_body = req.read
 
-    serialized_object = JSON.parse(response_body)
+    # from_week = Date.strptime('2001-02-03', '%Y-%m-%d')
 
-    # iterate through sources printing properties
-    serialized_object['articles'].each do |sunny|
-      puts sunny["author"]
-      puts "***"
-      puts sunny["title"]
-      puts "***"
-      puts sunny["description"]
-      puts "***"
-      puts sunny["url"]
-      puts "***"
-      puts sunny["urlToImage"]
-      puts "***"
-      puts sunny["publishedAt"]
-      puts "***"
-      puts sunny["content"]
-      puts "***"
-      puts sunny["language"]
-      puts "%%%%%%%%%%%%%"
-    end
-    puts serialized_object['articles'].count
+    # puts from_week
+
+    to_week = Date.today
+    from_week = 7.days.before(to_week)
+
+    puts from_week.to_s
+    
+    urle = "https://newsapi.org/v2/everything?q=%22Trump%22&from=#{from_week}&to=#{to_week}&pageSize=100&page=3&language=en&apiKey=4b87c3dde8444f4e843dc41ab00f5c18"
+
+    puts urle 
+    # req = open(url)
+    # response_body = req.read
+
+    # serialized_object = JSON.parse(response_body)
+
+    # # iterate through sources printing properties
+    # serialized_object['articles'].each do |sunny|
+    #   puts sunny["author"]
+    #   puts "***"
+    #   puts sunny["title"]
+    #   puts "***"
+    #   puts sunny["description"]
+    #   puts "***"
+    #   puts sunny["url"]
+    #   puts "***"
+    #   puts sunny["urlToImage"]
+    #   puts "***"
+    #   puts sunny["publishedAt"]
+    #   puts "***"
+    #   puts sunny["content"]
+    #   puts "***"
+    #   puts sunny["language"]
+    #   puts "%%%%%%%%%%%%%"
+    # end
+    # puts serialized_object['articles'].count
 
   end
 # ------------------------------------------------------------------------------- #
