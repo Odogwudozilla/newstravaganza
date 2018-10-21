@@ -28,7 +28,7 @@ namespace :data do
       puts "#{counter} categories added to array"
       puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
     end
-    
+
     # Strip out duplicate valuse from the array
     category_array = category_array.uniq
 
@@ -49,7 +49,7 @@ namespace :data do
     )
     # send message to the console
     puts "Unknown category created also\n\n"
-    # send final message to console 
+    # send final message to console
     puts '********* Categories Seeded from API to Database successfully! *********'
   end
 
@@ -58,18 +58,19 @@ namespace :data do
 
 
 
-  
+
 # Pulls info from API and writes to the sources table
   desc "Write to the Sources table"
   task source_seed: :environment do
-    
+
     url = 'https://newsapi.org/v2/sources?apiKey=4b87c3dde8444f4e843dc41ab00f5c18'
     req = open(url)
     response_body = req.read
 
     # check if response from API is not empty before clearing database
     if response_body != ''
-      Source.destroy_all
+      # Source.destroy_all
+      NewsSource.delete_all
     end
 
     serialized_object = JSON.parse(response_body)
@@ -87,7 +88,7 @@ namespace :data do
       if category != nil
 
         # insert item to db
-        Source.create!(
+        NewsSource.create!(
           identity: article['id'],
           name: article['name'],
           category_id: category.id
@@ -103,7 +104,7 @@ namespace :data do
         if category != nil
 
           # insert item to db
-          Source.create!(
+          NewsSource.create!(
             identity: article['id'],
             name: article['name'],
             category_id: category.id
@@ -130,7 +131,7 @@ namespace :data do
 desc "Write to the Continents table"
   task continents_seed: :environment do
     unique_konti = []
-  
+
     CSV.foreach("lib/assets/Countries and Continents data.csv", :headers =>true) do |row |
       # parse values into an array
       unique_konti <<  row[5]
@@ -142,19 +143,19 @@ desc "Write to the Continents table"
     # Clear existing data if any
     Continent.destroy_all
 
-    
+
     unique_konti.each do | konti|
       # insert item to db
         Continent.create!(
           name: konti
-        ) 
+        )
       # send message to console
       puts "Continent of #{konti} created \n\n"
 
     end
     puts '********* Continents Seeded from CSV file to database successfully! **************'
   end
-  
+
   # ------------------------------------------------------------------------------- #
 
 
@@ -188,7 +189,7 @@ desc "Write to the Continents table"
 
     puts "********* #{Country.count} Countries Seeded from CSV file to database successfully! **************"
 
-  end 
+  end
 # ------------------------------------------------------------------------------- #
 
 
@@ -196,35 +197,50 @@ desc "Write to the Continents table"
 # Pulls info from API and writes to the Articles table
   desc "Write to the Articles table"
   task articles_seed: :environment do
-    
+
     url = 'https://newsapi.org/v2/everything?q=%22Trump%22&from=2018-10-01&to=2018-10-07&pageSize=100&page=3&language=en&apiKey=4b87c3dde8444f4e843dc41ab00f5c18'
     req = open(url)
     response_body = req.read
 
-    serialized_object = JSON.parse(response_body)
+    # from_week = Date.strptime('2001-02-03', '%Y-%m-%d')
 
-    # iterate through sources printing properties
-    serialized_object['articles'].each do |sunny|
-      puts sunny["author"]
-      puts "***"
-      puts sunny["title"]
-      puts "***"
-      puts sunny["description"]
-      puts "***"
-      puts sunny["url"]
-      puts "***"
-      puts sunny["urlToImage"]
-      puts "***"
-      puts sunny["publishedAt"]
-      puts "***"
-      puts sunny["content"]
-      puts "***"
-      puts sunny["language"]
-      puts "%%%%%%%%%%%%%"
-    end
-    puts serialized_object['articles'].count
+    # puts from_week
 
-  end 
+    to_week = Date.today
+    from_week = 7.days.before(to_week)
+
+    puts from_week.to_s
+    
+    urle = "https://newsapi.org/v2/everything?q=%22Trump%22&from=#{from_week}&to=#{to_week}&pageSize=100&page=3&language=en&apiKey=4b87c3dde8444f4e843dc41ab00f5c18"
+
+    puts urle 
+    # req = open(url)
+    # response_body = req.read
+
+    # serialized_object = JSON.parse(response_body)
+
+    # # iterate through sources printing properties
+    # serialized_object['articles'].each do |sunny|
+    #   puts sunny["author"]
+    #   puts "***"
+    #   puts sunny["title"]
+    #   puts "***"
+    #   puts sunny["description"]
+    #   puts "***"
+    #   puts sunny["url"]
+    #   puts "***"
+    #   puts sunny["urlToImage"]
+    #   puts "***"
+    #   puts sunny["publishedAt"]
+    #   puts "***"
+    #   puts sunny["content"]
+    #   puts "***"
+    #   puts sunny["language"]
+    #   puts "%%%%%%%%%%%%%"
+    # end
+    # puts serialized_object['articles'].count
+
+  end
 # ------------------------------------------------------------------------------- #
 
 
@@ -232,6 +248,6 @@ desc "Write to the Continents table"
 
 # to run both the category_seed and source_seed rake tasks at same time
   desc "Run both the category_seed and source_seed rake tasks"
-  task :all => [:category_seed, :source_seed, :continents_seed, :countries_seed]
+  task :all => [:continents_seed, :countries_seed , :category_seed, :source_seed ]
 
 end

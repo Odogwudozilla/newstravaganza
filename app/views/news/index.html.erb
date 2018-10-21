@@ -1,0 +1,15 @@
+<h1>News</h1>
+<%= @top_headlines["status"] %>
+
+<% for i in @top_headlines["articles"] do %>
+
+       <h4><%= i['title'] %></h4>
+      <p>
+
+          <% source = i["source"] %><br/>
+          <%= source["name"] %><br/>
+          <%= i["author"] %><br/>
+          <%= i["content"] %><br/>
+          <br/>
+      </p>
+<% end %>
