@@ -69,9 +69,9 @@ class UsersearchesController < ApplicationController
 
 
         def search
-            keyword = params[:q]
-            @results = get_all_news(q: keyword)
-            @top_headlines = get_all_news(q: keyword)
+            # keyword = params[:q]
+            # @results = get_all_news(q: keyword)
+            # @top_headlines = get_all_news(q: keyword)
               # @results = get_all_news(q: params[:keyword] ,
               #                         sources: params[:source] ,
               #                         from: params[:from] ,
