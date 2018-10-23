@@ -3,13 +3,20 @@
 
 <% for i in @top_headlines["articles"] do %>
 
-       <h4><%= i['title'] %></h4>
-      <p>
+<h4><em>
+        <%= i['title'] %></em></h4>
+<p>
 
-          <% source = i["source"] %><br/>
-          <%= source["name"] %><br/>
-          <%= i["author"] %><br/>
-          <%= i["content"] %><br/>
-          <br/>
-      </p>
+    <% source = i["source"] %><br />
+    <%= source["name"] %><br />
+    <%= i["author"] %><br />
+    <%= i["content"] %><br />
+    <br />
+</p>
+
+
 <% end %>
+<p>
+    Total =
+    <%= @top_headlines["articles"].count %>
+</p>
