@@ -1,0 +1,29 @@
+<div class="row" >
+<% for i in headlines["articles"][1..4] do %>
+  <% i["urlToImage"]? image = i["urlToImage"] : image = "/Page-under-construction.png"  %>
+    <div class="col-sm-3">
+      <div class="card" style="hieght:100px;overflow:hidden;">
+          <%= image_tag image , class: "card-img-top", alt: "Edit Entry" , style: "hieght:100%;width:100%;overflow:hidden;" %>
+          <div class="card-body">
+            <h5 class="card-title">
+              <%= link_to (i['url']) do %>
+                    <h4><%= i['title'] %></h4>
+                      <% end %>
+                   <p>
+            </h5>
+            <p class="card-text">
+              <h6 class="card-title"><%= i['title'] %></h6>
+              <%= i["author"] %><br/>
+              <% source = i["source"] %>
+              <%= source["name"] %><br/>
+              <%= i["content"].split[0..50].join(' ') %><br/>
+                <%= link_to i['url'] , class:"btn btn-primary" do %>
+                  <span>Read More...</span>
+                    <% end %>
+                 <p>
+          </div>
+</div>
+</div>
+
+<% end %>
+</div>
