@@ -22,19 +22,23 @@
         <li><%= link_to 'Home', root_path, :class => "active" %></li>
         <li><a href="#">Stats</a></li>
       </ul>
-      <form class="navbar-form navbar-left" action="/action_page.php">
+
+
+      <%= form_tag( usersearches_search_path, method: "get", class:"navbar-form navbar-left") do %>
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="Search" name="search">
+        <%= text_field_tag(:q ,   @keyword , placeholder:"Search" , class:"form-control" ) %>
           <div class="input-group-btn">
-            <button class="btn btn-default" type="submit">
+        <%= button_tag( 'search' , class:"btn btn-default") do %>
               <i class="glyphicon glyphicon-search"></i>
-            </button>
-          </div>
+        <% end %>
         </div>
-      </form>
-      <div class="btn btn-primary">
-          <%= link_to 'Advanced Search', new_usersearch_path, :class => "btn" %>
-</div>
+      </div>
+      <% end %>
+
+
+      <div class="btn">
+          <%= link_to 'Advanced Search', new_usersearch_path, :class => "btn btn-default" %>
+        </div>
     </div>
   </nav>
 </header>

@@ -1,11 +1,16 @@
 <h1>News</h1>
 <% if @results["status"] = "OK" %>
 
-<p>Search Returns <%= @results["totalResults"] %>  articles </p>
+<p>Search returned <%= @results["totalResults"] %>  results </p>
+
+<%   # render partial: "news/top_stories" , headlines: @top_headlines %>
 
 <% for i in @results["articles"] do %>
 
-       <h4><%= i['title'] %></h4>
+<%= link_to (i['url']) do %>
+      <h4><%= i['title'] %></h4>
+        <% end %>
+     <p>
       <p>
 
           <% source = i["source"] %><br/>

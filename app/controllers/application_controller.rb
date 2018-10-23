@@ -5,7 +5,7 @@ require 'open-uri'
 class ApplicationController < ActionController::Base
 
     #get the news site apikey and store in a variable
-    @@news_api_key = '18aaacfb0dd14d53983514dd807bc2f7'
+    @@news_api_key = '01f24e7d9d6f4bf7ba0d928ba22bd050'
     #newsapi = News.new("18aaacfb0dd14d53983514dd807bc2f7")
 
     def get_all_news(options)
