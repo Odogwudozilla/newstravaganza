@@ -1,24 +1,71 @@
-
+<!--
 <%= form_for @usersearch do |f| %>
   <div class="field">
-    <%= f.label_tag :keyword  %><br />
-    <%= f.text_field_tag :keyword , :required => true %>
+    <%= f.label :keyword  %><br />
+    <%= f.text_field :keyword , :required => true %>
   </div>
 
   <div class="field">
-    <%= f.label_tag :category_id %><br />
-    <%= f.collection_select_tag :category_id, Category.order(:name), :id, :name, include_blank: true %>
+    <%= f.label :category_id %><br />
+    <%= f.collection_select :category_id, Category.order(:name), :id, :name, include_blank: true %>
   </div>
 
   <div class="field">
-    <%= f.label_tag :country_id %><br />
-    <%= f.collection_select_tag :country_id, Country.order(:name), :id, :name, include_blank: true %>
+    <%= f.label :country_id %><br />
+    <%= f.collection_select :country_id, Country.order(:name), :id, :name, include_blank: true %>
   </div>
   <div class="field">
-    <%= f.label_tag :language_id %><br />
-    <%= f.collection_select_tag :language_id, Language.order(:name), :id, :name, include_blank: true %>
+    <%= f.label :language_id %><br />
+    <%= f.collection_select :language_id, Language.order(:name), :id, :name, include_blank: true %>
+  </div> -->
+
+
+  <!-- <div class="actions"><%= f.submit "Search" %></div>
+<% end %> -->
+
+
+<%= form_with(model: usersearch, local: true) do |f| %>
+  <% if usersearch.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(usersearch.errors.count, "error") %> prohibited this search from being saved:</h2>
+
+      <ul>
+      <% usersearch.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="field">
+    <%= f.label :keyword  %><br />
+    <%= f.text_field :keyword , :required => true %>
   </div>
 
 
-  <div class="actions"><%= f.submit_tag "Search" %></div>
-<% end %>
+  <!-- <%= f.fields_for :keyword do |builder| %>
+     <div class="field">
+       <%= builder.label :keyword %><br />
+       <%= builder.text_field :keyword %>
+     </div>
+   <% end -%> -->
+
+
+  <div class="field">
+    <%= f.label :category_id %><br />
+    <%= f.collection_select :category_id, Category.order(:name), :id, :name, include_blank: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :country_id %><br />
+    <%= f.collection_select :country_id, Country.order(:name), :id, :name, include_blank: true %>
+  </div>
+  <div class="field">
+    <%= f.label :language_id %><br />
+    <%= f.collection_select :language_id, Language.order(:name), :id, :name, include_blank: true %>
+  </div>
+
+
+  <div class="actions"><%= f.submit "Search" %></div>
+  <% end %>

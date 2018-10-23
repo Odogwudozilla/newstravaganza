@@ -1,2 +1,39 @@
 <h1>Usersearches#index</h1>
 <p>Find me in app/views/usersearches/index.html.erb</p>
+
+
+<p id="notice">
+  <%= notice %>
+</p>
+
+<h1>Continents</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Keyword</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @usersearch.each do |usersearch| %>
+    <tr>
+      <td>
+        <%= usersearch.keyword %>
+      </td>
+      <td>
+        <%= link_to 'Show', usersearch %>
+      </td>
+      <td>
+        <%= link_to 'Edit', edit_usersearch_path(usersearch) %>
+      </td>
+      <td>
+        <%= link_to 'Destroy', usersearch, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
