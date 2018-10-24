@@ -2,6 +2,13 @@
 <h2>Recomended News </h2>
 
 
+
+<%= render partial: 'top_stories', locals: { top_headlines: @top_headlines } %>
+
+
+
+
+<h2>Top Searches </h2>
 <div class="row" >
 <% for i in @top_headlines["articles"][1..4] do %>
   <% i["urlToImage"]? image = i["urlToImage"] : image = "/Page-under-construction.png"  %>
@@ -19,8 +26,8 @@
               <h6 class="card-title"><%= i['title'] %></h6>
               <%= i["author"] %><br/>
               <% source = i["source"] %>
-              <%= source["name"] %><br/>
-              <%= i["content"].split[0..10].join(' ') %><br/>
+              <%= source ? source["name"] : "Unkown" %><br/>
+              <%= i["content"]? i["content"].split[0..10].join(' '): "Content Unavailable" %><br/>
 
                  <p>
                    <%= link_to i['url'] , class:"btn btn-primary" do %>
@@ -31,8 +38,3 @@
 </div>
 <% end %>
 </div>
-
-
-
-
-<h2>Top Searches </h2>
