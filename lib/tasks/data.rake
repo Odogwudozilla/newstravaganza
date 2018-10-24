@@ -71,7 +71,7 @@ namespace :data do
     # check if response from API is not empty before clearing database
     if response_body != ''
       # Source.destroy_all
-      NewsSource.delete_all
+      NewsSource.destroy_all
     end
 
     serialized_object = JSON.parse(response_body)
@@ -258,7 +258,59 @@ desc "Write to the Continents table"
 # ------------------------------------------------------------------------------- #
 
 
+# Pulls info from API and writes to the languages table
+  desc "Write to the languages table"
+  task languages_seed: :environment do
 
+    url = 'https://pkgstore.datahub.io/core/language-codes/language-codes-3b2_json/data/529809cd9e4c8829ec80dc4d2b2997e9/language-codes-3b2_json.json'
+    req = open(url)
+    response_body = req.read
+
+    # check if response from API is not empty before clearing database
+    if response_body != ''
+      Language.destroy_all
+    end
+
+    serialized_object = JSON.parse(response_body)
+
+    # iterate through API object and pull values into an array
+    serialized_object.each do | lang |
+
+      lang.each do |dotem|
+
+         #strip out the language name
+        if dotem[0] == "English"
+          @lang_name = dotem[1]
+
+          #strip out the corrsponding language code
+        elsif dotem[0] == "alpha3-b"
+         @lang_code = dotem[1]
+
+          #skip invalid values
+        else
+          puts "invalid value skipped"
+            
+        end 
+        
+        # insert item to db
+        Language.create!(
+          name: @lang_name,
+          code: @lang_code
+
+        )
+
+      end
+      
+      puts "Language name \"#{@lang_name}\" created with code as \"#{@lang_code}\"\n\n"
+      puts "___________________"
+    end
+
+    
+    # send final message to console
+     puts "********* Total of  \"#{Language.count}\" Languages Seeded from API to Database successfully! *********"
+  end
+
+# ------------------------------------------------------------------------------- #
 
 
 
@@ -316,6 +368,6 @@ desc "Write to the Continents table"
 
 # to run both the category_seed and source_seed rake tasks at same time
   desc "Run all (included) rake tasks"
-  task :all => [:continents_seed, :countries_seed , :category_seed, :source_seed, :keywords_seed ]
+  task :all => [:continents_seed, :countries_seed , :category_seed, :source_seed, :keywords_seed, :languages_seed ]
 
 end
