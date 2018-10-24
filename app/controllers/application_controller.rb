@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
 
     def get_all_news(options)
         options[:apiKey] = @@news_api_key
-        mUri = URI("https://newsapi.org/v2/everything")
+        mUri = URI("https://newsapi.org/v2/everything?&country=ng&pageSize=100")
         newuri = URI::HTTP.build( host: mUri.host , path: mUri.path , query: options.to_query)
         #url = 'https://newsapi.org/v2/top-headlines?country=us&apiKey=18aaacfb0dd14d53983514dd807bc2f7'
         response = HTTParty.get(newuri)

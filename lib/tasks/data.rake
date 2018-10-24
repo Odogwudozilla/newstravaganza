@@ -1,4 +1,5 @@
 require 'open-uri'
+require 'webhoseio'
 
 namespace :data do
 
@@ -70,7 +71,7 @@ namespace :data do
     # check if response from API is not empty before clearing database
     if response_body != ''
       # Source.destroy_all
-      NewsSource.delete_all
+      NewsSource.destroy_all
     end
 
     serialized_object = JSON.parse(response_body)
@@ -194,6 +195,125 @@ desc "Write to the Continents table"
 
 
 
+
+
+
+
+# Pulls info from CSV and writes to the Keywords table
+  desc "Write to the Keywords table"
+  task keywords_seed: :environment do
+  
+    #grabs the keywords data from API with API key
+    webhoseio = Webhoseio.new('f792ec54-82f9-490f-89ab-f5cd43bdb265')
+    query_params = {
+    "q" => " site_type:news domain_rank:<1000 social.facebook.shares:>1000 performance_score:>9 language:english",
+    "ts" => "1539755202162",
+	  "sort" => "relevancy"
+    }
+    keyword_output = webhoseio.query('filterWebContent', query_params)
+
+    # check if response from API is not empty before clearing database
+    if keyword_output != ''
+      # Keyword.destroy_all
+      Keyword.destroy_all
+    end
+
+    # Creates a new hash and ranks keywords according to frequency on news sites
+    kvp = Hash.new
+    # Grabs 'posts' collection
+    keyword_output['posts'].each do |post|
+    # Grabs 'entities' collection
+      post['entities'].each do |entity|
+        # Grabs 'entities' collection
+        entity[1].each do |item|
+          # Eliminates stings less than 5
+              if item['name'].length >4
+                # Checks if key-value pair exists
+                if kvp.key?(item['name'])
+                  kvp[item['name']] += 1
+                else
+                  kvp[item['name']] = 1
+                end 
+              end 
+            end       
+          end
+      end
+    # Sorts list according to frequency and takes first 20
+    sorted_kvp = kvp.sort_by{ |k,v| v }.reverse.take(20)
+    puts sorted_kvp.inspect
+    sorted_kvp.each do |keyword|
+
+    # insert item to db
+        Keyword.create!(
+          keyword: keyword[0],
+          hit_rate: keyword[1]
+
+        )
+        puts "Keyword \"#{keyword[0]}\" created with Hit_rate as \"#{keyword[1]}\"\n\n"
+    end 
+        # send message to console
+     puts "********* \'#{Keyword.count}\' Keywords Seeded from API to database successfully! **************"   
+
+  end
+# ------------------------------------------------------------------------------- #
+
+
+# Pulls info from API and writes to the languages table
+  desc "Write to the languages table"
+  task languages_seed: :environment do
+
+    url = 'https://pkgstore.datahub.io/core/language-codes/language-codes-3b2_json/data/529809cd9e4c8829ec80dc4d2b2997e9/language-codes-3b2_json.json'
+    req = open(url)
+    response_body = req.read
+
+    # check if response from API is not empty before clearing database
+    if response_body != ''
+      Language.destroy_all
+    end
+
+    serialized_object = JSON.parse(response_body)
+
+    # iterate through API object and pull values into an array
+    serialized_object.each do | lang |
+
+      lang.each do |dotem|
+
+         #strip out the language name
+        if dotem[0] == "English"
+          @lang_name = dotem[1]
+
+          #strip out the corrsponding language code
+        elsif dotem[0] == "alpha3-b"
+         @lang_code = dotem[1]
+
+          #skip invalid values
+        else
+          puts "invalid value skipped"
+            
+        end 
+        
+        # insert item to db
+        Language.create!(
+          name: @lang_name,
+          code: @lang_code
+
+        )
+
+      end
+      
+      puts "Language name \"#{@lang_name}\" created with code as \"#{@lang_code}\"\n\n"
+      puts "___________________"
+    end
+
+    
+    # send final message to console
+     puts "********* Total of  \"#{Language.count}\" Languages Seeded from API to Database successfully! *********"
+  end
+
+# ------------------------------------------------------------------------------- #
+
+
+
 # Pulls info from API and writes to the Articles table
   desc "Write to the Articles table"
   task articles_seed: :environment do
@@ -247,7 +367,7 @@ desc "Write to the Continents table"
 
 
 # to run both the category_seed and source_seed rake tasks at same time
-  desc "Run both the category_seed and source_seed rake tasks"
-  task :all => [:continents_seed, :countries_seed , :category_seed, :source_seed ]
+  desc "Run all (included) rake tasks"
+  task :all => [:continents_seed, :countries_seed , :category_seed, :source_seed, :keywords_seed, :languages_seed ]
 
 end
