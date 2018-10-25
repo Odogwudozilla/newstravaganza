@@ -25,29 +25,17 @@ class UsersearchesController < ApplicationController
 
 
 
-        def create
+        def create      #
 
-          #  form_params =  usersearch_params
-          #  @fkeyword = params[:keyword]
-          #  new_keyword = Keyword.where(:keyword => @fkeyword )
-          #     puts form_params
-          # # if new_keyword == false || new_keyword == nil
-          # #       # @keyword = Keyword.usersearches.build(keyword: @fkeyword ,  hit_rate: 1) )
-          # #       form_params[:usersearch][:keyword] = Keyword.new(keyword: @fkeyword , hit_rate: 1)
-          # #       new_keyword.save
-          # # els
-          #
-          # if new_keyword == true
-          #    new_keyword.hit_rate += 1
-          #    new_keyword.save
-          # end
+
+
 
            puts usersearch_params[:usersearch]
 
             @usersearch = Usersearch.new(usersearch_params[:usersearch])
               respond_to do |format|
                 if @usersearch.save
-                  format.html { redirect_to @usersearch, notice: 'User sEARCH was successfully created.' }
+                  format.html { redirect_to @usersearch, notice: 'User search was successfully created.' }
                   # format.json { render :show, status: :created, location: @country }
                 else
                   format.html { render :new }
@@ -73,6 +61,7 @@ class UsersearchesController < ApplicationController
                @keyword = params[:q]
                @results = get_all_news(q: @keyword)
                @top = get_top_news(q: @keyword)
+               @usersearch = Usersearch.new(keyword: @keyword , status: @results.status , totalresults: @totalResults )
               # @results = get_all_news(q: params[:keyword] ,
               #                         sources: params[:source] ,
               #                         from: params[:from] ,
