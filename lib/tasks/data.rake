@@ -364,6 +364,37 @@ desc "Write to the Continents table"
 # ------------------------------------------------------------------------------- #
 
 
+desc "Write to the Articles table"
+  task stats: :environment do
+    # def total_hitrate
+      @total_hits = 0
+      Keyword.all.each do |key|
+        puts key.hit_rate
+        @total_hits += key.hit_rate
+        puts @total_hits
+      end 
+      puts "the total number of hits is #{@total_hits} "
+    # end 
+    array_tot = []
+    array_keyword = []
+    tot = 0
+    # def each_percent
+      Keyword.all.each do |key|
+        @pie_percent = (key.hit_rate.to_f / @total_hits.to_f) * 100
+        tot += @pie_percent
+        array_tot << @pie_percent
+        array_keyword << key.keyword.titleize
+        puts @pie_percent
+    end
+
+    puts tot
+    print array_tot
+    puts 
+    puts array_keyword
+    # total_hitrate
+    # each_percent
+  end
+
 
 
 # to run both the category_seed and source_seed rake tasks at same time
@@ -371,3 +402,5 @@ desc "Write to the Continents table"
   task :all => [:continents_seed, :countries_seed , :category_seed, :source_seed, :keywords_seed, :languages_seed ]
 
 end
+
+
