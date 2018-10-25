@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_16_161711) do
+ActiveRecord::Schema.define(version: 2018_10_25_230639) do
 
   create_table "articles", force: :cascade do |t|
     t.string "author"
@@ -76,9 +76,7 @@ ActiveRecord::Schema.define(version: 2018_10_16_161711) do
   end
 
   create_table "usersearches", force: :cascade do |t|
-    t.string "status"
-    t.string "totalresults"
-    t.string "integer"
+    t.integer "totalresults"
     t.integer "keyword_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
