@@ -62,7 +62,7 @@ namespace :data do
 
 # Pulls info from API and writes to the sources table
   desc "Write to the Sources table"
-  task source_seed: :environment do
+  task sources_seed: :environment do
 
     url = 'https://newsapi.org/v2/sources?apiKey=4b87c3dde8444f4e843dc41ab00f5c18'
     req = open(url)
@@ -78,12 +78,20 @@ namespace :data do
 
     # iterate through sources printing properties
     serialized_object['sources'].each do | article |
+      puts article['category']
+      puts article['language']
+      puts article['country']
 
       # get category name from article
       category_name = article['category']
+      language_code = article['language']
+      country_code = article['country']
+
 
       # retrieve category with same name from db
       category = Category.find_by(:name => category_name)
+      language = Language.find_by(:code => language_code)
+      country = Country.find_by(:code => country_code)
 
       # ensure category exists first before anything
       if category != nil
@@ -92,7 +100,9 @@ namespace :data do
         NewsSource.create!(
           identity: article['id'],
           name: article['name'],
-          category_id: category.id
+          category_id: category.id,
+          language_id: language.id,
+          country_id: country.code
         )
 
         # send message to console
@@ -101,6 +111,8 @@ namespace :data do
       else
         # retrieve unknown category from db
         category = Category.find_by(:name => 'Unknown')
+        language = Language.find_by(:code => 'Unknown')
+        country = Country.find_by(:code => 'Unknown')
 
         if category != nil
 
@@ -108,7 +120,9 @@ namespace :data do
           NewsSource.create!(
             identity: article['id'],
             name: article['name'],
-            category_id: category.id
+            category_id: category.id,
+            language_id: language.id,
+            country_id: country.id
           )
 
           # send message to console
@@ -283,7 +297,7 @@ desc "Write to the Continents table"
           @lang_name = dotem[1]
 
           #strip out the corrsponding language code
-        elsif dotem[0] == "alpha3-b"
+        elsif dotem[0] == "alpha2"
          @lang_code = dotem[1]
 
           #skip invalid values
@@ -314,26 +328,89 @@ desc "Write to the Continents table"
 
 
 
-# Pulls info from API and writes to the Articles table
-  desc "Write to the Articles table"
+
+# Pulls info from API and writes to the languages table
+  desc "Write to the languages table"
   task articles_seed: :environment do
 
-    url = 'https://newsapi.org/v2/everything?q=%22Trump%22&from=2018-10-01&to=2018-10-07&pageSize=100&page=3&language=en&apiKey=4b87c3dde8444f4e843dc41ab00f5c18'
+    url = 'https://newsapi.org/v2/top-headlines?language=en&pageSize=100&apiKey=4b87c3dde8444f4e843dc41ab00f5c18'
     req = open(url)
     response_body = req.read
 
-    # from_week = Date.strptime('2001-02-03', '%Y-%m-%d')
+    # check if response from API is not empty before clearing database
+    if response_body != ''
+      Article.destroy_all
+    end
 
-    # puts from_week
+    serialized_object = JSON.parse(response_body)
+    puts serialized_object['articles'][0]['source']['name']
+
+    # # iterate through API object and pull values into an array
+    # serialized_object.each do | lang |
+
+    #   lang.each do |dotem|
+
+    #      #strip out the language name
+    #     if dotem[0] == "English"
+    #       @lang_name = dotem[1]
+
+    #       #strip out the corrsponding language code
+    #     elsif dotem[0] == "alpha2"
+    #      @lang_code = dotem[1]
+
+    #       #skip invalid values
+    #     else
+    #       puts "invalid value skipped"
+            
+    #     end 
+        
+    #     # insert item to db
+    #     Language.create!(
+    #       name: @lang_name,
+    #       code: @lang_code
+
+    #     )
+
+    #   end
+      
+    #   puts "Language name \"#{@lang_name}\" created with code as \"#{@lang_code}\"\n\n"
+    #   puts "___________________"
+    # end
+
+    
+    # # send final message to console
+    #  puts "********* Total of  \"#{Language.count}\" Languages Seeded from API to Database successfully! *********"
+  end
+
+# ------------------------------------------------------------------------------- #
+
+
+
+
+# Pulls info from API and writes to the Articles table
+  desc "Write to the Usersearches table"
+  task usersearches_seed: :environment do
+
+    # url = 'https://newsapi.org/v2/everything?q=%22Trump%22&from=2018-10-01&to=2018-10-07&pageSize=100&page=3&language=en&apiKey=4b87c3dde8444f4e843dc41ab00f5c18'
+    # req = open(url)
+    # response_body = req.read
 
     to_week = Date.today
     from_week = 7.days.before(to_week)
+    all_keywords = Keyword.all
 
     puts from_week.to_s
     
-    urle = "https://newsapi.org/v2/everything?q=%22Trump%22&from=#{from_week}&to=#{to_week}&pageSize=100&page=3&language=en&apiKey=4b87c3dde8444f4e843dc41ab00f5c18"
+    all_keywords.each do |keyword|
+      
+      urle = "https://newsapi.org/v2/everything?q=#{keyword.keyword}&from=#{from_week}&to=#{to_week}&pageSize=10&page=3&language=en&apiKey=4b87c3dde8444f4e843dc41ab00f5c18"
+      req = open(urle)
+      response_body = req.read
+      
+      serialized_object = JSON.parse(response_body)
+      puts serialized_object  
+    end
 
-    puts urle 
     # req = open(url)
     # response_body = req.read
 
@@ -399,7 +476,7 @@ desc "Write to the Articles table"
 
 # to run both the category_seed and source_seed rake tasks at same time
   desc "Run all (included) rake tasks"
-  task :all => [:continents_seed, :countries_seed , :category_seed, :source_seed, :keywords_seed, :languages_seed ]
+  task :all => [:continents_seed, :countries_seed, :keywords_seed, :languages_seed , :category_seed, :sources_seed ]
 
 end
 
