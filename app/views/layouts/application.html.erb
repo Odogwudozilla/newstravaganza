@@ -8,13 +8,51 @@
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-</head>
+  </head>
 
 <body>
 
+<<<<<<< HEAD
   <header class="row">
     <%= render 'layouts/navbar' %>
   </header>
+=======
+<header class="row">
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Newscharts</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li><%= link_to 'Home', root_path, :class => "active" %></li>
+        <li><a href="#">Stats</a></li>
+      </ul>
+
+
+      <%= form_tag( usersearches_search_path, method: "get", class:"navbar-form navbar-left") do %>
+        <div class="input-group">
+        <%= text_field_tag(:q ,   @keyword , placeholder:"Search" , class:"form-control" ) %>
+          <div class="input-group-btn">
+        <%= button_tag( 'search' , class:"btn btn-default") do %>
+              <i class="glyphicon glyphicon-search"></i>
+        <% end %>
+        </div>
+      </div>
+      <% end %>
+
+      <div class="btn1">
+          <%= link_to 'Geo Search', geomap_geocontinent_path, :class => "btn btn-default" %>
+        </div>
+      <div class="btn">
+          <%= link_to 'Advanced Search', new_usersearch_path, :class => "btn btn-default" %>
+        </div>
+    <!-- </div> -->
+
+  </div>
+
+  </nav>
+</header>
+>>>>>>> mapcontroller
 
   <div class="container">
     <%= yield %>
