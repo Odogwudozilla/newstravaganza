@@ -5,13 +5,13 @@
         <p> Search returned <%= @results["totalResults"] %>  results </p>
 
 
-                <h3>Top News for  <%= @keyword %> Results</h3>
+                <h3>Top News for  <%= @keyword %> </h3>
 
                 <%= render partial: 'news/top_stories', locals: { top_headlines: @top } %>
 
                 <h3>Results</h3>
                         <% for i in @results["articles"] do %>
-                  
+
                                   <%= link_to i['url'] do %>
                                     <h5><%= i['title'] %></h5>
                                   <% end %>
