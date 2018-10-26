@@ -78,14 +78,11 @@ namespace :data do
 
     # iterate through sources printing properties
     serialized_object['sources'].each do | article |
-      puts article['category']
-      puts article['language']
-      puts article['country']
-
+      
       # get category name from article
       category_name = article['category']
       language_code = article['language']
-      country_code = article['country']
+      country_code = article['country'].upcase
 
 
       # retrieve category with same name from db
@@ -94,7 +91,7 @@ namespace :data do
       country = Country.find_by(:code => country_code)
 
       # ensure category exists first before anything
-      if category != nil
+      if category != nil && language != nil && country != nil
 
         # insert item to db
         NewsSource.create!(
@@ -102,7 +99,7 @@ namespace :data do
           name: article['name'],
           category_id: category.id,
           language_id: language.id,
-          country_id: country.code
+          country_id: country.id
         )
 
         # send message to console
@@ -111,8 +108,8 @@ namespace :data do
       else
         # retrieve unknown category from db
         category = Category.find_by(:name => 'Unknown')
-        language = Language.find_by(:code => 'Unknown')
-        country = Country.find_by(:code => 'Unknown')
+        language = Language.find_by(:code => 'UKN')
+        country = Country.find_by(:code => 'UKN')
 
         if category != nil
 
@@ -196,11 +193,19 @@ desc "Write to the Continents table"
           continent_id: kontinent.id
 
         )
-
+        
         # send message to console
       puts "Country #{row[0]} created with Continent as #{kontinent.name}\n\n"
 
     end
+
+    # Creates a dummy country to accommodate unknown values in sources
+        Country.create!(
+          name: "Unknown",
+          code: "UKN",
+          continent_id: Continent.first.id
+        )
+       puts "Dummy Country created"
 
     puts "********* #{Country.count} Countries Seeded from CSV file to database successfully! **************"
 
@@ -313,12 +318,20 @@ desc "Write to the Continents table"
 
         )
 
+
+
       end
       
       puts "Language name \"#{@lang_name}\" created with code as \"#{@lang_code}\"\n\n"
       puts "___________________"
     end
 
+    # Creates a dummy language to accommodate unknown values in sources
+        Language.create!(
+          name: "Unknown",
+          code: "UKN"
+        )
+        puts "Dummy language created"
     
     # send final message to console
      puts "********* Total of  \"#{Language.count}\" Languages Seeded from API to Database successfully! *********"
@@ -345,41 +358,38 @@ desc "Write to the Continents table"
     serialized_object = JSON.parse(response_body)
     puts serialized_object['articles'][0]['source']['name']
 
-    # # iterate through API object and pull values into an array
-    # serialized_object.each do | lang |
+    # iterate through API object and pull values into an array
+    serialized_object['articles'].each do | articula |
 
-    #   lang.each do |dotem|
+      category_iwant = NewsSource.find_by(:name => articula['source']['name'])
 
-    #      #strip out the language name
-    #     if dotem[0] == "English"
-    #       @lang_name = dotem[1]
+      # retrieve category with same name from db
+      source_id = NewsSource.find_by(:identity => articula['source']['id'])
+      language = NewsSource.find_by(:language_id => category_iwant.language_id)
+      category = NewsSource.find_by(:category_id => category_iwant.category_id)
 
-    #       #strip out the corrsponding language code
-    #     elsif dotem[0] == "alpha2"
-    #      @lang_code = dotem[1]
+     
 
-    #       #skip invalid values
-    #     else
-    #       puts "invalid value skipped"
-            
-    #     end 
-        
-    #     # insert item to db
-    #     Language.create!(
-    #       name: @lang_name,
-    #       code: @lang_code
-
-    #     )
-
-    #   end
+        # insert item to db
+        Article.create!(
+          author: articula['author'],
+          title: articula['title'],
+          description: articula['description'],
+          url: articula['url'],
+          url_image: articula['urlToImage'],
+          published_date: articula['publishedAt'],
+          content: articula['content'],
+          language: language.language.code,
+          category_id: category.category.id,
+          news_source_id: source_id.id
+        )
+         puts "Article with content \"#{articula['content']}\" created with category as \"#{category.category.name}\" and source as \"#{source_id.name}\"\n\n"
+      puts "___________________"
       
-    #   puts "Language name \"#{@lang_name}\" created with code as \"#{@lang_code}\"\n\n"
-    #   puts "___________________"
-    # end
+    end
 
+    puts "******************** Articles seeded from API to database successfully *****************"
     
-    # # send final message to console
-    #  puts "********* Total of  \"#{Language.count}\" Languages Seeded from API to Database successfully! *********"
   end
 
 # ------------------------------------------------------------------------------- #
@@ -391,16 +401,13 @@ desc "Write to the Continents table"
   desc "Write to the Usersearches table"
   task usersearches_seed: :environment do
 
-    # url = 'https://newsapi.org/v2/everything?q=%22Trump%22&from=2018-10-01&to=2018-10-07&pageSize=100&page=3&language=en&apiKey=4b87c3dde8444f4e843dc41ab00f5c18'
-    # req = open(url)
-    # response_body = req.read
-
     to_week = Date.today
     from_week = 7.days.before(to_week)
     all_keywords = Keyword.all
 
-    puts from_week.to_s
-    
+
+      Usersearch.destroy_all
+        
     all_keywords.each do |keyword|
       
       urle = "https://newsapi.org/v2/everything?q=#{keyword.keyword}&from=#{from_week}&to=#{to_week}&pageSize=10&page=3&language=en&apiKey=4b87c3dde8444f4e843dc41ab00f5c18"
@@ -408,34 +415,38 @@ desc "Write to the Continents table"
       response_body = req.read
       
       serialized_object = JSON.parse(response_body)
-      puts serialized_object  
+
+      # iterate through API object and pull values into an array
+    serialized_object['articles'].each do | articula |
+
+      category_iwant = NewsSource.find_by(:name => articula['source']['name'])
+
+      # retrieve category with same name from db
+      source_id = NewsSource.find_by(:identity => articula['source']['id'])
+      category = NewsSource.find_by(:category_id => category_iwant.category_id)
+      keyword_id = Keyword.find_by(:keyword => keyword.keyword)
+      rand_count = rand(7...57)
+
+       # ensure category exists first before anything
+      if category != nil
+        # insert item to db
+        Usersearch.create!(
+          description: articula['description'],
+          count: rand_count,
+          keyword_id: keyword_id.id,
+          category_id: category.category.id,
+          news_source_id: source_id.id
+        )
+         puts "Usersearches with description \"#{articula['description']}\" created with count as \"#{rand_count}\" and source as \"#{source_id.name}\"\n\n"
+      puts "___________________"
+      
     end
 
-    # req = open(url)
-    # response_body = req.read
+    puts "******************** Usersearches seeded from API to database successfully *****************"
+    
+ 
+    end
 
-    # serialized_object = JSON.parse(response_body)
-
-    # # iterate through sources printing properties
-    # serialized_object['articles'].each do |sunny|
-    #   puts sunny["author"]
-    #   puts "***"
-    #   puts sunny["title"]
-    #   puts "***"
-    #   puts sunny["description"]
-    #   puts "***"
-    #   puts sunny["url"]
-    #   puts "***"
-    #   puts sunny["urlToImage"]
-    #   puts "***"
-    #   puts sunny["publishedAt"]
-    #   puts "***"
-    #   puts sunny["content"]
-    #   puts "***"
-    #   puts sunny["language"]
-    #   puts "%%%%%%%%%%%%%"
-    # end
-    # puts serialized_object['articles'].count
 
   end
 # ------------------------------------------------------------------------------- #
@@ -476,7 +487,7 @@ desc "Write to the Articles table"
 
 # to run both the category_seed and source_seed rake tasks at same time
   desc "Run all (included) rake tasks"
-  task :all => [:continents_seed, :countries_seed, :keywords_seed, :languages_seed , :category_seed, :sources_seed ]
+  task :all => [:continents_seed, :countries_seed, :keywords_seed, :languages_seed , :category_seed, :sources_seed, :articles_seed ]
 
 end
 
