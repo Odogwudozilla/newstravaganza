@@ -1,6 +1,6 @@
 class Country < ApplicationRecord
   belongs_to :continent
-  has_many :news_sources
+  has_many :news_sources, :dependent => :destroy
 
   def get_country_map_data
              @mapdata = {}

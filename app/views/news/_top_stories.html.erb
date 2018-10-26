@@ -1,5 +1,6 @@
 <% if top_headlines["articles"] != []  %>
 
+<<<<<<< HEAD
 <div class="row">
   <% for i in top_headlines["articles"][1..20] do %>
   <% i["urlToImage"]? image = i["urlToImage"] : image = "/Page-under-construction.png"  %>
@@ -28,12 +29,50 @@
             <%= link_to i['url'] , class:"btn btn-primary" do %>
             <span>Read More...</span>
             <% end %>
+=======
+      <div class="row" >
+      <% for i in top_headlines["articles"][1..4] do %>
+        <% i["urlToImage"]? image = i["urlToImage"] : image = 'newscharts.png'  %>
+          <div class="col-sm-3">
+            <div class="card card-img">
+                <%= image_tag image_url(image) , class: "card-img-top", alt: "Edit Entry" %>
+                <div class="card-body">
+                  <h5 class="card-title">
+                    <%= link_to (i['url']) , class: "card-title" do %>
+                          <h6><%= i['title'] %></h6>
+                            <% end %>
+                         <p>
+                  </h5>
+                  <div class="news-author"> <span><i>written by</i> <b><%= i["author"] ? i["author"] : "Unkown author" %></b></span></div>
+                    <div class="news-source"> <% source = i["source"] %></div>
+                    <div class="news-source-name"> <%= source ? source["name"] : "Unkown" %></div>
+                    <div class="news-content">
+                      <p class="card-text">
+                    <% i["content"]? i["content"].split[0..10].join(''): "Content Unavailable" %><br/>
+                         </p>
+
+                         </div>
+                          <div class="card-footer">
+                         <%= link_to i['url'] , class:"btn btn-primary" do %>
+                           <span>Read More...</span>
+                             <% end %>
+                             </div>
+                </div>
+      </div>
+      </div>
+      <% end %>
+>>>>>>> 3c61be99f7b6de0072216a08c450c527f09ca2a8
       </div>
     </div>
   </div>
   <% end %>
 </div>
 
+
 <% else %>
 <h5>No highlights available for this subject</h5>
+<<<<<<< HEAD
 <% end %>
+=======
+<% end %>
+>>>>>>> 3c61be99f7b6de0072216a08c450c527f09ca2a8

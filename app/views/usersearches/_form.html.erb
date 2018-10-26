@@ -3,20 +3,25 @@
   <div class="field">
     <%= f.label :keyword  %><br />
     <%= f.text_field :keyword , :required => true %>
+
+    <div class="field">
+      <%= f.label :news_source %><br />
+      <%= f.collection_select :news_source, NewsSource.order(:name), :id, :name, include_blank: true %>
+    </div>
   </div>
 
   <div class="field">
-    <%= f.label :category_id %><br />
-    <%= f.collection_select :category_id, Category.order(:name), :id, :name, include_blank: true %>
+    <%= f.label :category %><br />
+    <%= f.collection_select :id, Category.order(:name), :id, :name, include_blank: true %>
   </div>
 
   <div class="field">
-    <%= f.label :country_id %><br />
-    <%= f.collection_select :country_id, Country.order(:name), :id, :name, include_blank: true %>
+    <%= f.label :country %><br />
+    <%= f.collection_select :country, Country.order(:name), :id, :name, include_blank: true %>
   </div>
   <div class="field">
-    <%= f.label :language_id %><br />
-    <%= f.collection_select :language_id, Language.order(:name), :id, :name, include_blank: true %>
+    <%= f.label :language %><br />
+    <%= f.collection_select :language, Language.order(:name), :id, :name, include_blank: true %>
   </div> -->
 
 
@@ -51,19 +56,23 @@
      </div>
    <% end -%> -->
 
+   <div class="field">
+     <%= f.label :news_source %><br />
+     <%= f.collection_select :news_source, NewsSource.order(:name), :id, :name, include_blank: true %>
+   </div>
 
   <div class="field">
-    <%= f.label :category_id %><br />
-    <%= f.collection_select :category_id, Category.order(:name), :id, :name, include_blank: true %>
+    <%= f.label :category %><br />
+    <%= f.collection_select :category, Category.order(:name), :id, :name, include_blank: true %>
   </div>
 
   <div class="field">
     <%= f.label :country_id %><br />
-    <%= f.collection_select :country_id, Country.order(:name), :id, :name, include_blank: true %>
+    <%= f.collection_select :country, Country.order(:name), :id, :name, include_blank: true %>
   </div>
   <div class="field">
     <%= f.label :language_id %><br />
-    <%= f.collection_select :language_id, Language.order(:name), :id, :name, include_blank: true %>
+    <%= f.collection_select :language, Language.order(:name), :id, :name, include_blank: true %>
   </div>
 
 

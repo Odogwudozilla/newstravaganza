@@ -1,6 +1,7 @@
 require 'news-api'
 require 'httparty'
 require 'open-uri'
+require 'resolv-replace'
 
 class ApplicationController < ActionController::Base
 
@@ -24,6 +25,7 @@ class ApplicationController < ActionController::Base
   end
 
 
+
   # method definition to get the top news for a country
   def get_top_news(options={})
           if options == {}
@@ -40,5 +42,6 @@ class ApplicationController < ActionController::Base
             top_headlines = response.parsed_response
        return top_headlines
   end
+
 
 end
