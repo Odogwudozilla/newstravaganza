@@ -78,6 +78,9 @@ namespace :data do
 
     # iterate through sources printing properties
     serialized_object['sources'].each do | article |
+      puts article['category']
+      puts article['language']
+      puts article['country']
 
       # get category name from article
       category_name = article['category']
