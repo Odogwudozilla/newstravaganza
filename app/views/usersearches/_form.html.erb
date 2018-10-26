@@ -1,32 +1,3 @@
-<!--
-<%= form_for @usersearch do |f| %>
-  <div class="field">
-    <%= f.label :keyword  %><br />
-    <%= f.text_field :keyword , :required => true %>
-
-    <div class="field">
-      <%= f.label :news_source %><br />
-      <%= f.collection_select :news_source, NewsSource.order(:name), :id, :name, include_blank: true %>
-    </div>
-  </div>
-
-  <div class="field">
-    <%= f.label :category %><br />
-    <%= f.collection_select :id, Category.order(:name), :id, :name, include_blank: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :country %><br />
-    <%= f.collection_select :country, Country.order(:name), :id, :name, include_blank: true %>
-  </div>
-  <div class="field">
-    <%= f.label :language %><br />
-    <%= f.collection_select :language, Language.order(:name), :id, :name, include_blank: true %>
-  </div> -->
-
-
-  <!-- <div class="actions"><%= f.submit "Search" %></div>
-<% end %> -->
 
 
 <%= form_with(model: usersearch, local: true) do |f| %>
@@ -43,38 +14,32 @@
   <% end %>
 
 
-  <div class="field">
+
+  <div class="form-group">
     <%= f.label :keyword  %><br />
-    <%= f.text_field :keyword , :required => true %>
+    <%= f.text_field :keyword , placeholder: "Enter Search Term" , :required => true , class: "form-control"%>
   </div>
 
 
-  <!-- <%= f.fields_for :keyword do |builder| %>
-     <div class="field">
-       <%= builder.label :keyword %><br />
-       <%= builder.text_field :keyword %>
-     </div>
-   <% end -%> -->
-
-   <div class="field">
+   <div class="form-group">
      <%= f.label :news_source %><br />
-     <%= f.collection_select :news_source, NewsSource.order(:name), :id, :name, include_blank: true %>
+     <%= f.collection_select :news_source, NewsSource.order(:name), :id, :name, include_blank: true , class: "form-control" %>
    </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :category %><br />
-    <%= f.collection_select :category, Category.order(:name), :id, :name, include_blank: true %>
+    <%= f.collection_select :category, Category.order(:name), :id, :name, include_blank: true , class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :country_id %><br />
-    <%= f.collection_select :country, Country.order(:name), :id, :name, include_blank: true %>
+    <%= f.collection_select :country, Country.order(:name), :id, :name, include_blank: true  , class: "form-control"%>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :language_id %><br />
-    <%= f.collection_select :language, Language.order(:name), :id, :name, include_blank: true %>
+    <%= f.collection_select :language, Language.order(:name), :id, :name, include_blank: true  , class: "form-control"%>
   </div>
 
 
-  <div class="actions"><%= f.submit "Search" %></div>
+  <div class="actions"><%= f.submit "Search" , class:"btn btn-primary" %></div>
   <% end %>
