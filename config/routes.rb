@@ -12,6 +12,13 @@ Rails.application.routes.draw do
   resources :categories
   resources :sources
   resources :usersearches
+  # resources :geomap do
+  #   resources :countries
+  #   collection do
+  #     get :map
+  #   end
+  # end
+
   root 'news#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

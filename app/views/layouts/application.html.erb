@@ -8,7 +8,7 @@
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-</head>
+  </head>
 
 <body>
 
@@ -35,14 +35,14 @@
       </div>
       <% end %>
 
-
+      <div class="btn1">
+          <%= link_to 'Geo Search', geomap_geocontinent_path, :class => "btn btn-default" %>
+        </div>
       <div class="btn">
           <%= link_to 'Advanced Search', new_usersearch_path, :class => "btn btn-default" %>
         </div>
-    </div>
-    <div class="btn1">
-        <%= link_to 'Geo Search', geomap_geocontinent_path, :class => "btn btn-default" %>
-      </div>
+    <!-- </div> -->
+
   </div>
 
   </nav>
