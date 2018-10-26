@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'usersearches/show'
   get 'news/index'
   get 'usersearches/search'
+  get 'statistics/index'
   resources :countries
   resources :continents
   resources :categories

@@ -1,0 +1,125 @@
+<div class="">
+  <h1>Statistics Page</h1>
+</div>
+
+
+<div class="card " id="container" style="min-width: 600px; height: 800px; max-width: 800px; margin: 0 auto"></div>
+
+<script>
+
+  var keywords = []
+  var totals = []
+  var keywords = <%= raw @array_keyword.to_json %>;
+  var totals =  <%= raw @array_tot.to_json %>;
+
+  var pdata = [];
+
+  for (i = 0; i < keywords.length; i++) {
+    var subdata = { name: keywords[i], y: totals[i] }
+    pdata.push(subdata)
+  }
+
+
+
+  Highcharts.setOptions({
+
+  })
+
+  // Build the chart
+  Highcharts.chart('container', {
+    chart: {
+      plotBackgroundColor: null,
+      plotBorderWidth: null,
+      plotShadow: false,
+      type: 'pie'
+    },
+    title: {
+      text: 'Popular keywords for the month'
+    },
+    tooltip: {
+      pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
+    },
+    plotOptions: {
+      pie: {
+        allowPointSelect: true,
+        cursor: 'pointer',
+        dataLabels: {
+          enabled: true
+        },
+        showInLegend: false
+      }
+    },
+    series: [{
+      name: 'Popularity',
+      colorByPoint: true,
+      data: pdata
+
+      /* data: [{
+        name: <%= raw @array_keyword[0] %>,
+          y: <%= raw @array_tot[0] %>,
+            sliced: true,
+              selected: true
+      }, {
+    name: <%= raw @array_keyword[1] %>,
+      y: <%= raw @array_tot[1] %>
+  }, {
+    name: <%= raw @array_keyword[2] %>,
+      y: <%= raw @array_tot[2] %>
+  }, {
+    name: <%= raw @array_keyword[3] %>,
+      y: <%= raw @array_tot[3] %>
+  }, {
+    name: <%= raw @array_keyword[4] %>,
+      y: <%= raw @array_tot[4] %>
+  }, {
+    name: <%= raw @array_keyword[5] %>,
+      y: <%= raw @array_tot[5] %>
+  }, {
+    name: <%= raw @array_keyword[6] %>,
+      y: <%= raw @array_tot[6] %>
+  }, {
+    name: <%= raw @array_keyword[7] %>,
+      y: <%= raw @array_tot[7] %>
+  }, {
+    name: <%= raw @array_keyword[8] %>,
+      y: <%= raw @array_tot[8] %>
+  }, {
+    name: <%= raw @array_keyword[9] %>,
+      y: <%= raw @array_tot[9] %>
+  }, {
+    name: <%= raw @array_keyword[10] %>,
+      y: <%= raw @array_tot[10] %>
+  }, {
+    name: <%= raw @array_keyword[11] %>,
+      y: <%= raw @array_tot[11] %>
+  }, {
+    name: <%= raw @array_keyword[12] %>,
+      y: <%= raw @array_tot[12] %>
+  }, {
+    name: <%= raw @array_keyword[13] %>,
+      y: <%= raw @array_tot[13] %>
+  }, {
+    name: <%= raw @array_keyword[14] %>,
+      y: <%= raw @array_tot[14] %>
+  }, {
+    name: <%= raw @array_keyword[15] %>,
+      y: <%= raw @array_tot[15] %>
+  }, {
+    name: <%= raw @array_keyword[16] %>,
+      y: <%= raw @array_tot[16] %>
+  }, {
+    name: <%= raw @array_keyword[17] %>,
+      y: <%= raw @array_tot[17] %>
+  }, {
+    name: <%= raw @array_keyword[18] %>,
+      y: <%= raw @array_tot[18] %>
+  }, {
+    name: <%= raw @array_keyword[19] %>,
+      y: <%= raw @array_tot[19] %>
+  }, {
+    name: <%= raw @array_keyword[20] %>,
+      y: <%= raw @array_tot[20] %>
+  }] */
+    }]
+  });
+</script>

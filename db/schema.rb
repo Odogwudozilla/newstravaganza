@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_16_161711) do
+ActiveRecord::Schema.define(version: 2018_10_26_013908) do
 
   create_table "articles", force: :cascade do |t|
     t.string "author"
@@ -21,14 +21,12 @@ ActiveRecord::Schema.define(version: 2018_10_16_161711) do
     t.datetime "published_date"
     t.text "content"
     t.string "language"
-    t.integer "source_id"
-    t.integer "country_id"
+    t.integer "news_source_id"
     t.integer "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_articles_on_category_id"
-    t.index ["country_id"], name: "index_articles_on_country_id"
-    t.index ["source_id"], name: "index_articles_on_source_id"
+    t.index ["news_source_id"], name: "index_articles_on_news_source_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -72,25 +70,26 @@ ActiveRecord::Schema.define(version: 2018_10_16_161711) do
     t.integer "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "language_id"
+    t.integer "country_id"
     t.index ["category_id"], name: "index_news_sources_on_category_id"
+    t.index ["country_id"], name: "index_news_sources_on_country_id"
+    t.index ["language_id"], name: "index_news_sources_on_language_id"
   end
 
   create_table "usersearches", force: :cascade do |t|
-    t.string "status"
-    t.string "totalresults"
-    t.string "integer"
+    t.string "description"
+    t.string "count"
     t.integer "keyword_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "country_id"
-    t.integer "source_id"
-    t.integer "language_id"
+    t.integer "news_source_id"
     t.integer "category_id"
+    t.integer "article_id"
+    t.index ["article_id"], name: "index_usersearches_on_article_id"
     t.index ["category_id"], name: "index_usersearches_on_category_id"
-    t.index ["country_id"], name: "index_usersearches_on_country_id"
     t.index ["keyword_id"], name: "index_usersearches_on_keyword_id"
-    t.index ["language_id"], name: "index_usersearches_on_language_id"
-    t.index ["source_id"], name: "index_usersearches_on_source_id"
+    t.index ["news_source_id"], name: "index_usersearches_on_news_source_id"
   end
 
 end

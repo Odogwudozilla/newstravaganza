@@ -1,36 +1,39 @@
-
 <% if top_headlines["articles"] != []  %>
 
-      <div class="row" >
-      <% for i in top_headlines["articles"][1..4] do %>
-        <% i["urlToImage"]? image = i["urlToImage"] : image = "/Page-under-construction.png"  %>
-          <div class="col-sm-3">
-            <div class="card">
-                <%= image_tag image , class: "card-img-top", alt: "Edit Entry" , style: "hieght:100%;width:100%;overflow:hidden;" %>
-                <div class="card-body">
-                  <h5 class="card-title">
-                    <%= link_to (i['url']) do %>
-                          <h4><%= i['title'] %></h4>
-                            <% end %>
-                         <p>
-                  </h5>
-                  <p class="card-text">
-                    <h6 class="card-title"><%= i['title'] %></h6>
-                    <%= i["author"] %><br/>
-                    <% source = i["source"] %>
-                    <%= source ? source["name"] : "Unkown" %><br/>
-                    <%= i["content"]? i["content"].split[0..10].join(' '): "Content Unavailable" %><br/>
+<div class="row">
+  <% for i in top_headlines["articles"][1..20] do %>
+  <% i["urlToImage"]? image = i["urlToImage"] : image = "/Page-under-construction.png"  %>
+  <div class="col-sm-3">
+    <div class="card">
+      <%= image_tag image , class: "card-img-top", alt: "Edit Entry" , style: "hieght:100%;width:100%;overflow:hidden;" %>
+      <div class="card-body">
+        <h5 class="card-title">
+          <%= link_to (i['url']) do %>
+          <h4>
+            <%= i['title'] %>
+          </h4>
+          <% end %>
+          <p>
+        </h5>
+        <p class="card-text">
+          <h6 class="card-title">
+            <%= i['title'] %>
+          </h6>
+          <%= i["author"] %><br />
+          <% source = i["source"] %>
+          <%= source ? source["name"] : "Unkown" %><br />
+          <%= i["content"]? i["content"].split[0..10].join(' '): "Content Unavailable" %><br />
 
-                       <p>
-                         <%= link_to i['url'] , class:"btn btn-primary" do %>
-                           <span>Read More...</span>
-                             <% end %>
-                </div>
+          <p>
+            <%= link_to i['url'] , class:"btn btn-primary" do %>
+            <span>Read More...</span>
+            <% end %>
       </div>
-      </div>
-      <% end %>
-      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
 
 <% else %>
-    <h5>No highlights available for this subject</h5>
+<h5>No highlights available for this subject</h5>
 <% end %>
