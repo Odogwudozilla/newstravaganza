@@ -1,6 +1,6 @@
 class UsersearchesController < ApplicationController
 
-
+      include ::Newschart
         # GET /countries
         # GET /countries.json
         def index

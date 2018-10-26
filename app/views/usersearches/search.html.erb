@@ -11,7 +11,7 @@
 
                 <h3>Results</h3>
                         <% for i in @results["articles"] do %>
-                          <p>
+                  
                                   <%= link_to i['url'] do %>
                                     <h5><%= i['title'] %></h5>
                                   <% end %>
@@ -20,7 +20,6 @@
                                   <%= i["author"] %><br/>
                                   <%= i["content"] %><br/>
                                   <br/>
-                              </p>
                         <% end %>
 
                 <% else %>

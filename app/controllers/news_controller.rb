@@ -1,5 +1,7 @@
 class NewsController < ApplicationController
 
+    include ::Newschart
+
         def index
 
                 @top_headlines = get_top_news()
