@@ -78,7 +78,7 @@ namespace :data do
 
     # iterate through sources printing properties
     serialized_object['sources'].each do | article |
-      
+
       # get category name from article
       category_name = article['category']
       language_code = article['language']
@@ -193,7 +193,7 @@ desc "Write to the Continents table"
           continent_id: kontinent.id
 
         )
-        
+
         # send message to console
       puts "Country #{row[0]} created with Continent as #{kontinent.name}\n\n"
 
@@ -221,7 +221,7 @@ desc "Write to the Continents table"
 # Pulls info from CSV and writes to the Keywords table
   desc "Write to the Keywords table"
   task keywords_seed: :environment do
-  
+
     #grabs the keywords data from API with API key
     webhoseio = Webhoseio.new('f792ec54-82f9-490f-89ab-f5cd43bdb265')
     query_params = {
@@ -252,9 +252,9 @@ desc "Write to the Continents table"
                   kvp[item['name']] += 1
                 else
                   kvp[item['name']] = 1
-                end 
-              end 
-            end       
+                end
+              end
+            end
           end
       end
     # Sorts list according to frequency and takes first 20
@@ -269,9 +269,9 @@ desc "Write to the Continents table"
 
         )
         puts "Keyword \"#{keyword[0]}\" created with Hit_rate as \"#{keyword[1]}\"\n\n"
-    end 
+    end
         # send message to console
-     puts "********* \'#{Keyword.count}\' Keywords Seeded from API to database successfully! **************"   
+     puts "********* \'#{Keyword.count}\' Keywords Seeded from API to database successfully! **************"
 
   end
 # ------------------------------------------------------------------------------- #
@@ -308,9 +308,9 @@ desc "Write to the Continents table"
           #skip invalid values
         else
           puts "invalid value skipped"
-            
-        end 
-        
+
+        end
+
         # insert item to db
         Language.create!(
           name: @lang_name,
@@ -321,7 +321,7 @@ desc "Write to the Continents table"
 
 
       end
-      
+
       puts "Language name \"#{@lang_name}\" created with code as \"#{@lang_code}\"\n\n"
       puts "___________________"
     end
@@ -332,7 +332,7 @@ desc "Write to the Continents table"
           code: "UKN"
         )
         puts "Dummy language created"
-    
+
     # send final message to console
      puts "********* Total of  \"#{Language.count}\" Languages Seeded from API to Database successfully! *********"
   end
@@ -368,7 +368,7 @@ desc "Write to the Continents table"
       language = NewsSource.find_by(:language_id => category_iwant.language_id)
       category = NewsSource.find_by(:category_id => category_iwant.category_id)
 
-     
+
 
         # insert item to db
         Article.create!(
@@ -385,11 +385,11 @@ desc "Write to the Continents table"
         )
          puts "Article with content \"#{articula['content']}\" created with category as \"#{category.category.name}\" and source as \"#{source_id.name}\"\n\n"
       puts "___________________"
-      
+
     end
 
     puts "******************** Articles seeded from API to database successfully *****************"
-    
+
   end
 
 # ------------------------------------------------------------------------------- #
@@ -407,13 +407,13 @@ desc "Write to the Continents table"
 
 
       Usersearch.destroy_all
-        
+
     all_keywords.each do |keyword|
-      
+
       urle = "https://newsapi.org/v2/everything?q=#{keyword.keyword}&from=#{from_week}&to=#{to_week}&pageSize=10&page=3&language=en&apiKey=4b87c3dde8444f4e843dc41ab00f5c18"
       req = open(urle)
       response_body = req.read
-      
+
       serialized_object = JSON.parse(response_body)
 
       # iterate through API object and pull values into an array
@@ -439,12 +439,12 @@ desc "Write to the Continents table"
         )
          puts "Usersearches with description \"#{articula['description']}\" created with count as \"#{rand_count}\" and source as \"#{source_id.name}\"\n\n"
       puts "___________________"
-      
+
     end
 
     puts "******************** Usersearches seeded from API to database successfully *****************"
-    
- 
+
+
     end
 
 
@@ -460,9 +460,9 @@ desc "Write to the Articles table"
         puts key.hit_rate
         @total_hits += key.hit_rate
         puts @total_hits
-      end 
+      end
       puts "the total number of hits is #{@total_hits} "
-    # end 
+    # end
     array_tot = []
     array_keyword = []
     tot = 0
@@ -477,12 +477,12 @@ desc "Write to the Articles table"
 
     puts tot
     print array_tot
-    puts 
+    puts
     puts array_keyword
     # total_hitrate
     # each_percent
   end
-
+end
 
 
 # to run both the category_seed and source_seed rake tasks at same time
@@ -490,5 +490,3 @@ desc "Write to the Articles table"
   task :all => [:continents_seed, :countries_seed, :keywords_seed, :languages_seed , :category_seed, :sources_seed, :articles_seed ]
 
 end
-
-
