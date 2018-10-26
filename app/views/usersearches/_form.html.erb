@@ -51,6 +51,10 @@
      </div>
    <% end -%> -->
 
+   <div class="field">
+     <%= f.label :news_source_id %><br />
+     <%= f.collection_select :news_source_id, NewsSource.order(:name), :id, :name, include_blank: true %>
+   </div>
 
   <div class="field">
     <%= f.label :category_id %><br />

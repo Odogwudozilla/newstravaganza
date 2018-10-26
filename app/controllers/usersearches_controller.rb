@@ -61,6 +61,7 @@ class UsersearchesController < ApplicationController
                @keyword = params[:q]
                @results = get_all_news(q: @keyword)
                @top = get_top_news(q: @keyword)
+<<<<<<< HEAD
                @usersearch = Usersearch.new(keyword: @keyword , status: @results.status , totalresults: @totalResults )
               # @results = get_all_news(q: params[:keyword] ,
               #                         sources: params[:source] ,
@@ -72,6 +73,13 @@ class UsersearchesController < ApplicationController
 
               #
 
+=======
+               keyword = Keyword.find_or_create_by(keyword: @keyword)
+               Keyword.increment_counter(:hit_rate, keyword.id)
+               @usersearch = Usersearch.new(keyword: keyword )
+               @usersearch.save
+       puts get_top_keywords
+>>>>>>> Index_Branch
         end
 
 

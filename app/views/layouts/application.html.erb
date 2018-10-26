@@ -14,9 +14,12 @@
 
 <header class="row">
   <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
+
       <div class="navbar-header">
-        <a class="navbar-brand" href="#">Newscharts</a>
+        <a class="navbar-brand" href="#">
+          <img src="/assets/index.png" width="30" height="30" class="d-inline-block align-top" alt="">
+            Newscharts
+          </a>
       </div>
       <ul class="nav navbar-nav">
         <li><%= link_to 'Home', root_path, :class => "active" %></li>
@@ -24,11 +27,19 @@
       </ul>
 
 <div class="pull-right">
+<<<<<<< HEAD
+=======
+
+>>>>>>> Index_Branch
       <%= form_tag( usersearches_search_path, method: "get", class:"navbar-form navbar-left") do %>
         <div class="input-group">
         <%= text_field_tag(:q ,   @keyword , placeholder:"Search" , class:"form-control" ) %>
           <div class="input-group-btn">
+<<<<<<< HEAD
         <%= button_tag( 'search' , class:"btn btn-default" , value: 'submit') do %>
+=======
+        <%= button_tag( 'search' , class:"btn btn-success") do %>
+>>>>>>> Index_Branch
               <i class="glyphicon glyphicon-search"></i>
         <% end %>
         </div>
@@ -39,14 +50,58 @@
       <div class="btn">
           <%= link_to 'Advanced Search', new_usersearch_path, :class => "btn btn-success" %>
         </div>
+        <div class="btn">
+            <%= link_to 'Geo Search', new_usersearch_path, :class => "btn btn-success" %>
+          </div>
     </div>
+<<<<<<< HEAD
     </div>
+=======
+
+
+>>>>>>> Index_Branch
   </nav>
 </header>
 
-  <div class="container" >
+  <div class="container-fluid" >
   <%= yield %>
 </div>
+
+
+    <!----------- Footer ------------>
+    <footer class="footer-bs">
+        <div class="row">
+        	<div class="col-md-4 footer-brand animated fadeInLeft">
+              <div class=col-md-6>
+              <img src="/assets/University_of_Aberdeen_arms.svg" width="200" height="150" class="d-inline-block align-top" alt="">
+              </div>
+                <div class=col-md-6>
+                <p>News API App wrritten By Hauwa Abdullahi, Damilola Ajaja, & Chidozie</p>
+                <p>© 2018 AWAD, All rights reserved</p>
+                </div>
+            </div>
+        	<div class="col-md-4 footer-nav animated fadeInUp">
+            	<h4>Quick Links —</h4>
+            	<div class="col-md-6">
+                    <ul class="list">
+                        <li><a href="#">Advanced Serach</a></li>
+                        <li><a href="#">Geo Search</a></li>
+                        <li><a href="#">News Statistics</a></li>
+                    </ul>
+                </div>
+            </div>
+        	<div class="col-md-3 footer-social animated fadeInDown">
+            	<h4>References</h4>
+            	<ul>
+                	<li><a href="#">NewsAPI</a></li>
+                	<li><a href="#">BootStrap</a></li>
+                	<li><a href="#">Rails Guide</a></li>
+                	<li><a href="https://bootsnipp.com/snippets/e3QvQ">BootSnip</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </footer>
 
 
 </body>

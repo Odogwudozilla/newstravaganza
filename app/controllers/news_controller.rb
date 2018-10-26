@@ -2,13 +2,14 @@ class NewsController < ApplicationController
 
         def index
 
-                # @top = get_all_news(q: "hauwa")
                 @top_headlines = get_top_news()
+                @top_keywords = get_top_keywords
         end
 
 
         def search
            @keyword = params[:q]
+<<<<<<< HEAD
 
            keyword_exist = Keyword.find_by(keyword: @keyword)
 
@@ -28,6 +29,10 @@ class NewsController < ApplicationController
           @results = get_all_news(q: @keyword)
           @top = get_top_news(q: @keyword)
 
+=======
+           @results = get_all_news(q: @keyword)
+           @top = get_top_news(q: @keyword)
+>>>>>>> Index_Branch
 
           redirect_to usersearches_search_path
 
