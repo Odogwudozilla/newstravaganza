@@ -1,4 +1,4 @@
 class Country < ApplicationRecord
   belongs_to :continent
-  has_many :news_sources
+  has_many :news_sources, :dependent => :destroy
 end

@@ -1,3 +1,3 @@
 class Language < ApplicationRecord
-  has_many :news_sources
+  has_many :news_sources, :dependent => :destroy
 end

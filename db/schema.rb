@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_26_013908) do
+ActiveRecord::Schema.define(version: 2018_10_26_135339) do
 
   create_table "articles", force: :cascade do |t|
     t.string "author"
@@ -85,8 +85,6 @@ ActiveRecord::Schema.define(version: 2018_10_26_013908) do
     t.datetime "updated_at", null: false
     t.integer "news_source_id"
     t.integer "category_id"
-    t.integer "article_id"
-    t.index ["article_id"], name: "index_usersearches_on_article_id"
     t.index ["category_id"], name: "index_usersearches_on_category_id"
     t.index ["keyword_id"], name: "index_usersearches_on_keyword_id"
     t.index ["news_source_id"], name: "index_usersearches_on_news_source_id"
