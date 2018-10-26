@@ -13,5 +13,14 @@ def get_top_keywords
   return top_10
 end
 
+def get_top_search_news
+  top_searches = []
+    top = Keyword.order(hit_rate: :desc).limit(4)
+    top.each do |t|
+      knews = get_all_news(q: t.keyword)
+      top_searches << knews["articles"][0]
+    end
+    return top_searches
+end
 
 end

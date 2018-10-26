@@ -12,7 +12,7 @@
 
 <h2>Top Searches </h2>
 <div class="row">
-  <% for i in @top_headlines["articles"][1..4] do %>
+  <% for i in @top_searches do %>
   <% i["urlToImage"]? image = i["urlToImage"] : image = "/Page-under-construction.png"  %>
     <div class="col-sm-3">
       <div class="card">
