@@ -4,3 +4,30 @@
 nav {
   opacity: 0.9;
 }
+.container-fluid {
+  margin: 10px 40px;
+}
+.card-img-top {
+  img {
+    height: 200px;
+    width: 100%;
+    padding: 10px 10px;
+  }
+}
+
+.card-body {
+  padding: 5px 20px;
+  hr {
+    margin: 5px 0;
+  }
+  h5 {
+    margin: 5px 0;
+  }
+  h6 {
+    font-size: 0.8em;
+  }
+}
+.border-success {
+  -moz-box-shadow: 0 0 30px 5px #999;
+  -webkit-box-shadow: 0 0 30px 5px #999;
+}

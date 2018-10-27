@@ -48,6 +48,8 @@ gem 'nokogiri', '~> 1.6', '>= 1.6.8'
 gem 'httparty', '~> 0.13.7'
 
 gem 'webhoseio', '~> 0.0.1'
+# API for performing paginated queries with Active Record, DataMapper and Sequel
+gem 'will_paginate', '~> 3.1', '>= 3.1.6'
 
 
 group :development, :test do
