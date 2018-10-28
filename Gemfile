@@ -49,6 +49,7 @@ gem 'httparty', '~> 0.13.7'
 
 gem 'webhoseio', '~> 0.0.1'
 
+gem 'geocoder'
 
 group :development, :test do
 # Use sqlite3 as the database for Active Record
