@@ -38,6 +38,5 @@
     <%= f.collection_select :language, Language.order(:name), :id, :name, include_blank: true  , class: "form-control"%>
   </div>
 
-
   <div class="actions"><%= f.submit "Search" , class:"btn btn-primary" %></div>
   <% end %>

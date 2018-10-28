@@ -19,7 +19,7 @@
     <% @usersearch.each do |usersearch| %>
     <tr>
       <td>
-        <%= usersearch.keyword %>
+        <%= usersearch.keyword.keyword %>
       </td>
       <td>
         <%= link_to 'Show', usersearch %>
