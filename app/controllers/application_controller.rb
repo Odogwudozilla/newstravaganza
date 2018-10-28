@@ -4,6 +4,9 @@ require 'open-uri'
 require 'resolv-replace'
 
 class ApplicationController < ActionController::Base
+    
+# set per_page globally
+WillPaginate.per_page = 20
 
     #get the news site apikey and store in a variable
     # @@news_api_key = '01f24e7d9d6f4bf7ba0d928ba22bd050'

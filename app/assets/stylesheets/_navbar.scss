@@ -1,0 +1,58 @@
+nav {
+  opacity: 0.9;
+}
+.navbar {
+  background-color: rgba(28, 28, 29, 0.96);
+  height: 80px;
+  width: 100%;
+  .navbar-brand {
+    font-weight: bolder;
+    .light {
+      font-weight: 300;
+    }
+    img {
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      border: 1px solid #00ff62;
+    }
+  }
+  .navbar-toggler {
+    outline: none;
+  }
+
+  .nav-item {
+    img {
+      height: 30px;
+      width: 30px;
+      border-radius: 50%;
+      border: 1px solid #00ff62;
+    }
+  }
+}
+
+.collapse-bg {
+  padding: 0 !important;
+  .card {
+    margin-bottom: 0;
+    border-radius: 0;
+    border: none;
+  }
+}
+
+.collapse-bg .list-group-item {
+  padding: 0;
+  border-radius: 0 !important;
+  border-color: black;
+  a {
+    background-color: #1a1a1a;
+    color: #bdc3c7;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    &:active {
+      color: white;
+      border-bottom: none;
+    }
+  }
+}

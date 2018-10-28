@@ -2,60 +2,25 @@
 <html>
 
 <head>
-  <title>Newscharts</title>
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
+    <title>Newscharts</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
 
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 
 <body>
 
-  <header class="row">
-    <%= render 'layouts/navbar' %>
-  </header>
+    <div class="">
+        <%= render 'layouts/navbar' %>
+    </div>
 
-  <div class="container-fluid" >
-  <%= yield %>
-</div>
+    <div class="container-fluid">
+        <%= yield %>
+    </div>
 
-
-    <!----------- Footer ------------>
-    <footer class="footer-bs">
-        <div class="row">
-        	<div class="col-md-4 footer-brand animated fadeInLeft">
-              <div class=col-md-6>
-              <img src="/assets/University_of_Aberdeen_arms.svg" width="200" height="150" class="d-inline-block align-top" alt="">
-              </div>
-                <div class=col-md-6>
-                <p>News API App wrritten By Hauwa Abdullahi, Damilola Ajaja, & Chidozie</p>
-                <p>© 2018 AWAD, All rights reserved</p>
-                </div>
-            </div>
-        	<div class="col-md-4 footer-nav animated fadeInUp">
-            	<h4>Quick Links —</h4>
-            	<div class="col-md-6">
-                    <ul class="list">
-                        <li><a href="#">Advanced Serach</a></li>
-                        <li><a href="#">Geo Search</a></li>
-                        <li><a href="#">News Statistics</a></li>
-                    </ul>
-                </div>
-            </div>
-        	<div class="col-md-3 footer-social animated fadeInDown">
-            	<h4>References</h4>
-            	<ul>
-                	<li><a href="#">NewsAPI</a></li>
-                	<li><a href="#">BootStrap</a></li>
-                	<li><a href="#">Rails Guide</a></li>
-                	<li><a href="https://bootsnipp.com/snippets/e3QvQ">BootSnip</a></li>
-                </ul>
-            </div>
-
-        </div>
-    </footer>
-
+    <%= render 'layouts/footer' %>
 
 </body>
 

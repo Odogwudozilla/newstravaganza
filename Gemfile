@@ -5,8 +5,8 @@ ruby '2.4.1'
 
 gem 'news-api'
 gem 'bootstrap-sass', '~> 3.2.0'
-gem 'autoprefixer-rails'
-gem 'bootstrap', '~> 4.1.3'
+gem 'bootstrap', '~> 4.1', '>= 4.1.3'
+gem 'autoprefixer-rails', '~> 9.3', '>= 9.3.1'
 
 gem 'mini_racer', platforms: :ruby
 gem 'popper_js', '~> 1.14.3'
@@ -48,6 +48,8 @@ gem 'nokogiri', '~> 1.6', '>= 1.6.8'
 gem 'httparty', '~> 0.13.7'
 
 gem 'webhoseio', '~> 0.0.1'
+# API for performing paginated queries with Active Record, DataMapper and Sequel
+gem 'will_paginate', '~> 3.1', '>= 3.1.6'
 
 gem 'geocoder'
 
