@@ -4,7 +4,7 @@
   <% for i in top_headlines["articles"][1..4] do %>
   <% i["urlToImage"]? image = i["urlToImage"] : image = 'newscharts.png'  %>
   <div class="col-sm-6 col-lg-3 py-2 h-100">
-    <div class="card border-success my-3">
+    <div class="card border-success hvr-bounce-in my-3">
       <div class="card-img-top img-fluid">
         <%= image_tag image_url(image), alt: "Edit Entry" %>
       </div>

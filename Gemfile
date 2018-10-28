@@ -5,8 +5,8 @@ ruby '2.4.1'
 
 gem 'news-api'
 gem 'bootstrap-sass', '~> 3.2.0'
-gem 'autoprefixer-rails'
-gem 'bootstrap', '~> 4.1.3'
+gem 'bootstrap', '~> 4.1', '>= 4.1.3'
+gem 'autoprefixer-rails', '~> 9.3', '>= 9.3.1'
 
 gem 'mini_racer', platforms: :ruby
 gem 'popper_js', '~> 1.14.3'

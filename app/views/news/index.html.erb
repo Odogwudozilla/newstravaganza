@@ -15,7 +15,7 @@
       <% for i in @top_searches do %>
       <% i["urlToImage"]? image = i["urlToImage"] : image = "newscharts.jpg"  %>
       <div class="col-sm-6 col-lg-3 py-2 h-100 mb-3">
-        <div class="card border-success">
+        <div class="card border-success hvr-bounce-in">
           <div class="card-img-top img-fluid">
             <%= image_tag image, alt: "Edit Entry" %>
           </div>
@@ -54,7 +54,7 @@
       <% s.each do |k,v| %>
       <%= link_to usersearches_search_path(q: k), class:"list-group-item " do %>
       <span>
-        <%= k %></span>
+        <%= k.titleize %></span>
       <% end %>
       <% end %>
       <% end %>
