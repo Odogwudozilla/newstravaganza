@@ -15,25 +15,25 @@
       </tr>
     </thead>
 
-    <tbody>
-      <% @usersearch.each do |usersearch| %>
-      <tr>
-        <td>
-          <%= usersearch.keyword %>
-        </td>
-        <td>
-          <%= link_to 'Show', usersearch %>
-        </td>
-        <td>
-          <%= link_to 'Edit', edit_usersearch_path(usersearch) %>
-        </td>
-        <td>
-          <%= link_to 'Destroy', usersearch, method: :delete, data: { confirm: 'Are you sure?' } %>
-        </td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
+  <tbody>
+    <% @usersearch.each do |usersearch| %>
+    <tr>
+      <td>
+        <%= usersearch.keyword.keyword %>
+      </td>
+      <td>
+        <%= link_to 'Show', usersearch %>
+      </td>
+      <td>
+        <%= link_to 'Edit', edit_usersearch_path(usersearch) %>
+      </td>
+      <td>
+        <%= link_to 'Destroy', usersearch, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
 
   <br>
 </div>

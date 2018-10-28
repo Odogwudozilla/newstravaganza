@@ -22,8 +22,8 @@
 
     <div class="pull-right">
 
-      <%= form_tag( usersearches_search_path, method: "get", class:"navbar-form navbar-left") do %>
-      <div class="input-group">
+      <%= form_tag(usersearches_create_path, method: "get", class:"navbar-form navbar-left") do %>
+        <div class="input-group">
         <%= text_field_tag(:q ,   @keyword , placeholder:"Search" , class:"form-control" ) %>
         <div class="input-group-btn">
 

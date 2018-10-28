@@ -52,6 +52,7 @@ gem 'webhoseio', '~> 0.0.1'
 # API for performing paginated queries with Active Record, DataMapper and Sequel
 gem 'will_paginate', '~> 3.1', '>= 3.1.6'
 
+gem 'geocoder'
 
 group :development, :test do
 # Use sqlite3 as the database for Active Record

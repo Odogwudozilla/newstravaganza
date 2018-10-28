@@ -1,18 +1,27 @@
 Rails.application.routes.draw do
   get 'geomap/geocontinent'
   get 'geomap/geocountries'
+
+  get 'news/index'
+
+  get 'statistics/index'
   get 'usersearches/new'
   get 'usersearches/index'
   get 'usersearches/edit'
   get 'usersearches/show'
-  get 'news/index'
+  get 'usersearches/create'
   get 'usersearches/search'
-  get 'statistics/index'
+
   resources :countries
   resources :continents
   resources :categories
   resources :sources
-  resources :usersearches
+
+  resources :usersearches do
+
+  end
+
+
   # resources :geomap do
   #   resources :countries
   #   collection do

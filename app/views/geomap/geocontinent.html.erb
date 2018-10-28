@@ -18,23 +18,8 @@
     });
 
 
-  var markers = [];
-  var n = markers.length;
-   for (var i = 0; i < n; i++) {
-     var lat = markers[i].latitude;
-     var lng = markers[i].longitude;
-     if (lat == null || lng ==null){
-       console.log(markers[i].name + " doesn't have coordinates");
-     }else {
-       var marker = new google.maps.Marker({
-         position: {lat: parseFloat(lat), lng: parseFloat(lng)},
-         title: markers[i].name,
-         map: map
-       });
-       bounds.extend(marker.position);
-     }
-   }
-   map.fitBounds(bounds);
+  var markers_array = [];
+
 
 
 
@@ -42,11 +27,18 @@
   {
                        var country = all_countries[i];
 
-                       var info =  "<strong>" + country.name + "</strong><br/>" + "<a id='countrynews' href='/usersearches/search/" + country.name +"'>News</a>";
+                       var info =  "<strong>" + country.name + "</strong><br/>" + "<a id='countrynews' href='/usersearches/search/'>News</a>";
 
                        var infowindow = new google.maps.InfoWindow({
                         content: info
                         });
+
+
+                        var uluru = {lat: parseFloat(country.latitude), lng: parseFloat(country.longitude) };
+                        //var infowindow = new google.maps.InfoWindow({content: contentString});
+                        var marker = new google.maps.Marker({position: uluru, map: map, title: country.name, content: info});
+                        //marker.bindInfoWindow(contentString);
+                        markers_array.push(marker);
 
 
   }

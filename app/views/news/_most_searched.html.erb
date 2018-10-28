@@ -1,0 +1,14 @@
+
+<div class="col-6 col-md-3 sidebar-offcanvas" id="sidebar">
+          <div class="list-group">
+       <a href="#" class="list-group-item active">Most Searched</a>
+        <% top_keywords.each do |s| %>
+            <% s.each do |k,v| %>
+                <%= link_to usersearches_search_path(q: k), class:"list-group-item" do %>
+                  <span><%= k %></span>
+                  <% end %>
+              <% end %>
+          <% end %>
+
+          </div>
+        </div>

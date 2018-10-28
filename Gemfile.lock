@@ -85,6 +85,7 @@ GEM
     erubi (1.7.1)
     execjs (2.7.0)
     ffi (1.9.25)
+    geocoder (1.5.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     httparty (0.13.7)
@@ -227,6 +228,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   chromedriver-helper
   coffee-rails (~> 4.2)
+  geocoder
   httparty (~> 0.13.7)
   jbuilder (~> 2.5)
   jquery-rails (~> 4.3, >= 4.3.3)
@@ -254,4 +256,4 @@ RUBY VERSION
    ruby 2.4.1p111
 
 BUNDLED WITH
-   1.16.6
+   1.17.1
