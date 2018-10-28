@@ -1,28 +1,33 @@
-<div class="container" >
-<h1>News</h1>
-<% if @results != false && @results["status"] = "OK"  %>
+<div class="container">
+        <h1>News</h1>
+        <% if @results != false && @results["status"] = "OK"  %>
 
-        <p> Search returned <%= @results["totalResults"] %>  results </p>
+        <p> Search returned
+                <%= @results["totalResults"] %> results </p>
 
 
-                <h3>Top News for  <%= @keyword %> </h3>
+        <h3>Top News for
+                <%= @keyword %>
+        </h3>
 
-                <%= render partial: 'news/top_stories', locals: { top_headlines: @top } %>
+        <%= render partial: 'news/top_stories', locals: { top_headlines: @top } %>
 
-                <h3>Results</h3>
-                        <% for i in @results["articles"] do %>
+        <h3>Results</h3>
+        <% for i in @results["articles"] do %>
 
-                                  <%= link_to i['url'] do %>
-                                    <h5><%= i['title'] %></h5>
-                                  <% end %>
-                                  <% source = i["source"] %>
-                                  <%= source["name"] %><br/>
-                                  <%= i["author"] %><br/>
-                                  <%= i["content"] %><br/>
-                                  <br/>
-                        <% end %>
+        <%= link_to i['url'] do %>
+        <h5>
+                <%= i['title'] %>
+        </h5>
+        <% end %>
+        <% source = i["source"] %>
+        <%= source["name"] %><br />
+        <%= i["author"] %><br />
+        <%= i["content"] %><br />
+        <br />
+        <% end %>
 
-                <% else %>
-                        <p>Search error </p>
-                <% end %>
+        <% else %>
+        <p>Search error </p>
+        <% end %>
 </div>

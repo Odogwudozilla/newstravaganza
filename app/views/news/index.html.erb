@@ -1,12 +1,14 @@
-<div class="col-12 col-md-9">
-<h2>Recomended News </h2>
+<div class="row">
 
+  <div class="my-2">
+    <h2>Recomended News </h2>
+  </div>
+  <div class="col-lg-10 col-md-10">
 
+    <%= render partial: 'top_stories', locals: { top_headlines: @top_headlines } %>
 
-<%= render partial: 'top_stories', locals: { top_headlines: @top_headlines } %>
+    <div class="my-2">
 
 <%= render partial: 'top_searches', locals: { top_searches: @top_searches } %>
-
-
 
 <%= render partial: 'most_searched', locals: { top_keywords: @top_keywords } %>

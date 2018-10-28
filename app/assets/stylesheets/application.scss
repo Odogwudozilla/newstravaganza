@@ -14,8 +14,9 @@
  * require_tree .
  * require_self
  */
-
- @import "bootstrap-sprockets";
- @import "bootstrap";
- @import "news.scss";
- @import "footer.scss";
+@import "normalise";
+@import "bootstrap-sprockets";
+@import "navbar";
+@import "bootstrap";
+@import "news.scss";
+@import "footer";
