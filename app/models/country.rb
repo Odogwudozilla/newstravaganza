@@ -4,8 +4,8 @@ class Country < ApplicationRecord
   belongs_to :continent
   has_many :news_sources, :dependent => :destroy
 
-  geocoded_by :name, latitude: :lat, longitude: :lon
-  before_save :geocode, if: -> {  self.name.present? } # do
+  # geocoded_by :name, latitude: :lat, longitude: :lon
+  # before_save :geocode, if: -> {  self.name.present? } # do
   #   result = Geocoder.search(self.name)
   #   coordinates = results.first.coordinates
   #   self.latitude, self.longitude = coordinates[0], coordinates[1]

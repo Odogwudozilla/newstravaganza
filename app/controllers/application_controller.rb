@@ -4,20 +4,21 @@ require 'open-uri'
 require 'resolv-replace'
 
 class ApplicationController < ActionController::Base
-    
+
 # set per_page globally
 WillPaginate.per_page = 20
 
     #get the news site apikey and store in a variable
     # @@news_api_key = '01f24e7d9d6f4bf7ba0d928ba22bd050'
-    @@news_api_key = '6058bea4bb6e4df897d7ad26cfe3dd71'
+    #@@news_api_key = '6058bea4bb6e4df897d7ad26cfe3dd71'
+    @@news_api_key = '6ef29d9dba7748a3914b6477bdd7c245'
     #newsapi = News.new("18aaacfb0dd14d53983514dd807bc2f7")
 
     def get_all_news(options)
         options[:apiKey] = @@news_api_key
         mUri = URI("https://newsapi.org/v2/everything?&country=ng&pageSize=100")
         newuri = URI::HTTP.build( host: mUri.host , path: mUri.path , query: options.to_query)
-        url = 'https://newsapi.org/v2/everything?country=us&apiKey=6058bea4bb6e4df897d7ad26cfe3dd71'
+        url = 'https://newsapi.org/v2/everything?country=us&apiKey=6ef29d9dba7748a3914b6477bdd7c245'
         response = HTTParty.get(newuri)
         all_headlines = response.parsed_response
         return all_headlines
@@ -34,7 +35,7 @@ WillPaginate.per_page = 20
           if options == {}
               # options = args[0]
               options[:apiKey] = @@news_api_key
-              url = 'https://newsapi.org/v2/top-headlines?country=gb&apiKey=6058bea4bb6e4df897d7ad26cfe3dd71'
+              url = 'https://newsapi.org/v2/top-headlines?country=gb&apiKey=6ef29d9dba7748a3914b6477bdd7c245'
               response = HTTParty.get(url)
           else
               options[:apiKey] = @@news_api_key
