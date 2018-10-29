@@ -15,7 +15,6 @@
         <%=link_to 'News Statistics', statistics_index_path, :class => " nav-item" %>
       </li>
       <li class="">
-        <%= link_to 'Geo Search', geomap_geocontinent_path, :class => " nav-item" %>
       </li>
     </ul>
 
@@ -23,7 +22,7 @@
     <div class="pull-right">
 
       <%= form_tag(usersearches_create_path, method: "get", class:"navbar-form navbar-left") do %>
-        <div class="input-group">
+      <div class="input-group">
         <%= text_field_tag(:q ,   @keyword , placeholder:"Search" , class:"form-control" ) %>
         <div class="input-group-btn">
 
@@ -39,6 +38,7 @@
       <div class="btn ">
         <%= link_to 'Advanced Search', new_usersearch_path, :class => "btn btn-success" %>
       </div>
+      <%= link_to 'Geo Search', geomap_geocontinent_path, :class => " btn btn-success" %>
     </div>
 
   </nav>

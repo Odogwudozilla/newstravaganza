@@ -1,41 +1,57 @@
 <% if top_headlines["articles"] != []  %>
 
-      <div class="row" >
-      <% for i in top_headlines["articles"][1..4] do %>
-        <% i["urlToImage"]? image = i["urlToImage"] : image = "news_2.jpg"  %>
-          <div class="col-sm-3">
-             <%= link_to i['url']  do %>
-           <div class="card">
-            <div class="card card-img">
-                <%= image_tag image_url(image) , class: "card-img-top", alt: "Edit Entry" %>
-                <div class="card-body">
-                  <h5 class="card-title">
-                    <%= link_to (i['url']) , class: "card-title" do %>
-                          <h6><%= i['title'] %></h6>
-                            <% end %>
-                         <p>
-                  </h5>
-                  <div class="news-author"> <span><i>written by</i> <b><%= i["author"] ? i["author"] : "Unkown author" %></b></span></div>
-                    <div class="news-source"> <% source = i["source"] %></div>
-                    <div class="news-source-name"> <%= source ? source["name"] : "Unkown" %></div>
-                    <div class="news-content">
-                      <p class="card-text">
-                    <% i["content"]? i["content"].split[0..10].join(''): "Content Unavailable" %><br/>
-                         </p>
+<div class="row">
+  <% for i in top_headlines["articles"][1..4] do %>
+  <% i["urlToImage"]? image = i["urlToImage"] : image = "news_2.jpg"  %>
+  <div class="col-sm-6 col-lg-3 py-2 h-100">
+    <%= link_to i['url']  do %>
+    <div class="card border-success hvr-bounce-in my-3">
+      <div class="card-img-top img-fluid">
+        <%= image_tag image_url(image), alt: "Edit Entry" %>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">
+          <%= link_to (i['url']) do %>
+          <%= i['title'].truncate(50) %>
+          <% end %>
+        </h5>
+        <hr>
+        <div class="news-author">
+          <h6>
+            <i>written by</i> <br>
+          </h6>
+          <h5>
+            <%= i["author"] ? i["author"].truncate(25) : "Unkown author" %>
+          </h5>
+        </div>
+        <hr>
+        <div class="news-source">
+          <h6>
+            <i>Source: </i>
 
-                         </div>
-                          <div class="card-footer"></div>
-                    </div>
-                  </div>
-                </div>
-                 <% end %>
-                   </div>
+            <% source = i["source"] %>
+          </h6>
+        </div>
+        <div class="news-source-name">
+          <%= source ? source["name"] : "Unkown" %>
+        </div>
+        <div class="news-content">
+          <p class="card-text">
+            <% i["content"]? i["content"].split[0..10].join(''): "Content Unavailable" %><br />
+          </p>
 
+        </div>
+        <div class="card-footer"></div>
+      </div>
+    </div>
   </div>
   <% end %>
+
+  <% end %>
+
+
+
+  <% else %>
+  <h5><i>No highlights available for this subject</i></h5>
+  <% end %>
 </div>
-
-
-<% else %>
-<h5>No highlights available for this subject</h5>
-<% end %>
