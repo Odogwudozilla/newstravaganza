@@ -23,7 +23,7 @@
           <h6><i>written by</i>
           </h6>
           <h5>
-            <%= i["author"] ? i["author"] : "Unkown author" %>
+            <%= i["author"] ? i["author"].truncate(25) : "Unkown author" %>
           </h5>
         </div>
         <hr>

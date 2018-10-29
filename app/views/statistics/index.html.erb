@@ -5,7 +5,7 @@
 
 <div class="stat-card " id="container" style="min-width: 600px; height: 800px; max-width: 800px; margin: 0 auto"></div>
 
-<div class="stats-card " id="Country_sources" style="min-width: 600px; height: 800px; max-width: 800px; margin: 0 auto"></div>
+
 
 <script>
 
@@ -59,73 +59,78 @@
     }]
   });
 
+</script>
+
+<hr>
+
+<div class="stats-card " id="Country_sources" style="min-width: 600px; height: 800px; max-width: 800px; margin: 0 auto"></div>
+
+
+<script>
+
 
   var a = []
   var b = []
-  var a = <%= raw @sorted_keys.to_json %>;
-  var b =  <%= raw @sorted_values.to_json %>;
+  var a = <%= raw @sorted_keys %>;
+  var b =  <%= raw @sorted_values %>;
 
-  var adata = [];
+  var cdata = [];
+
 
   for (i = 0; i < a.length; i++) {
-    var subdata = { categories: a[i], data: b[i] }
-    adata.push(subdata)
+    var subdata = [a[i], b[i]]
+    cdata.push(subdata)
   }
+  console.log(a);
+  console.log(b);
 
   Highcharts.chart('Country_sources', {
     chart: {
-      type: 'bar'
+      type: 'column'
     },
     title: {
-      text: 'Historic World Population by Region'
+      text: 'News Sources by Country'
     },
     subtitle: {
-      text: 'Source: <a href="https://en.wikipedia.org/wiki/World_population">Wikipedia.org</a>'
+      text: 'Populated from around the world'
     },
     xAxis: {
-      categories: a[i],
-      title: {
-        text: null
+      type: 'category',
+      labels: {
+        rotation: -45,
+        style: {
+          fontSize: '13px',
+          fontFamily: 'Verdana, sans-serif'
+        }
       }
     },
     yAxis: {
       min: 0,
       title: {
-        text: 'Population (millions)',
-        align: 'high'
-      },
-      labels: {
-        overflow: 'justify'
-      }
-    },
-    tooltip: {
-      valueSuffix: ' millions'
-    },
-    plotOptions: {
-      bar: {
-        dataLabels: {
-          enabled: true
-        }
+        text: 'Number of Sources'
       }
     },
     legend: {
-      layout: 'vertical',
-      align: 'right',
-      verticalAlign: 'top',
-      x: -40,
-      y: 80,
-      floating: true,
-      borderWidth: 1,
-      backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
-      shadow: true
-    },
-    credits: {
       enabled: false
     },
+    tooltip: {
+      pointFormat: 'Number of News Sources: <b>{point.y} </b>'
+    },
     series: [{
-
-      data: b[1]
-
+      name: 'Population',
+      data: cdata,
+      dataLabels: {
+        enabled: true,
+        rotation: -90,
+        color: '#FFFFFF',
+        align: 'right',
+        format: '{point.y}', // one decimal
+        y: 10, // 10 pixels down from the top
+        style: {
+          fontSize: '13px',
+          fontFamily: 'Verdana, sans-serif'
+        }
+      }
     }]
   });
 </script>
