@@ -1,3 +1,6 @@
+e2aaabe	Damilola Ajaja	Mon Oct 29 23:13:42 2018	code reference
+f16e24f	Chidozie Nnachor	Mon Oct 29 22:15:12 2018	correcting merge conflict application.js
+07deba2	Chidozie Nnachor	Mon Oct 29 17:36:26 2018	Completing the charts for the news sources by countries
 9168d9a	Damilola Ajaja	Mon Oct 29 16:06:39 2018	usersearch json
 5591b64	Damilola Ajaja	Mon Oct 29 15:46:45 2018	merge api key
 bef54ee	Damilola Ajaja	Mon Oct 29 15:43:57 2018	json files
