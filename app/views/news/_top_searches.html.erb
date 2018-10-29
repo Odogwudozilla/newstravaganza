@@ -15,7 +15,7 @@
       <div class="card-body">
         <h5 class="card-title">
           <%= link_to (i['url']) do %>
-          <%= i['title'].truncate(50) %>
+          <%= i['title'] ? i['title'].truncate(50) : "Title Unavailable" %>
           <% end %>
         </h5>
         <hr>
