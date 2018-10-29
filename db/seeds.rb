@@ -184,7 +184,7 @@ def seed_countries
 def seed_categories
 
   
-    url = 'https://newsapi.org/v2/sources?apiKey=4b87c3dde8444f4e843dc41ab00f5c18'
+    url = 'https://newsapi.org/v2/sources?apiKey=01d52a3340e742b78df8736185a6087e'
     req = open(url)
     response_body = req.read
 
@@ -236,7 +236,7 @@ end
 def seed_news_sources
 
   
-    url = 'https://newsapi.org/v2/sources?apiKey=4b87c3dde8444f4e843dc41ab00f5c18'
+    url = 'https://newsapi.org/v2/sources?apiKey=01d52a3340e742b78df8736185a6087e'
     req = open(url)
     response_body = req.read
 
@@ -313,7 +313,7 @@ end
 def seed_articles
 
   
-    url = 'https://newsapi.org/v2/top-headlines?language=en&pageSize=100&apiKey=4b87c3dde8444f4e843dc41ab00f5c18'
+    url = 'https://newsapi.org/v2/top-headlines?language=en&pageSize=100&apiKey=01d52a3340e742b78df8736185a6087e'
     req = open(url)
     response_body = req.read
 
