@@ -7,7 +7,7 @@
   }
 </style>
 <div id="map"></div>
-
+<p><%= @all_countries %>>/p>
 <script>
   function initMap() {
     var all_countries = <%=raw @all_countries.to_json %>;
@@ -57,4 +57,4 @@
 }
 
 </script>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7jozg_f46_xudB4bPwi7xaltmjTcaNBQ&callback=initMap"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5eQ4rnc6jnHnikWPckD8peHa9bWkLcvE&callback=initMap"></script>

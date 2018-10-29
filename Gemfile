@@ -38,6 +38,34 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
+
+# REST API calls
+gem 'rest-client'
+
+# testing
+gem 'rspec-rails'
+
+# jquery-ui
+gem 'jquery-ui-rails'
+
+
+
+#google maps gem
+gem 'gmaps4rails'
+
+
+gem 'underscore-rails'
+
+#friend_id
+gem 'friendly_id', '~> 5.1.0'
+
+#charting library
+gem 'highcharts-rails'
+gem 'chartkick'
+
+#gem for font awesome
+gem "font-awesome-rails"
+gem 'font-awesome-sass', '~> 5.0.13'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

@@ -10,4 +10,7 @@ class GeomapController < ApplicationController
 
   def geocountries
   end
+
+  def heatmap
+  end 
 end

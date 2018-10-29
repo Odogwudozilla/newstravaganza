@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'geomap/geocontinent'
+  get 'geomap/heatmap'
   get 'geomap/geocountries'
 
   get 'news/index'

@@ -17,4 +17,6 @@
 //= require popper
 //= require rails-ujs
 //= require activestorage
+//= require highcharts
+//= require geomap
 //= require_tree .
