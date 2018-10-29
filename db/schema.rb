@@ -22,10 +22,12 @@ ActiveRecord::Schema.define(version: 2018_10_26_211823) do
     t.text "content"
     t.string "language"
     t.integer "news_source_id"
+    t.integer "country_id"
     t.integer "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_articles_on_category_id"
+    t.index ["country_id"], name: "index_articles_on_country_id"
     t.index ["news_source_id"], name: "index_articles_on_news_source_id"
   end
 
@@ -80,6 +82,7 @@ ActiveRecord::Schema.define(version: 2018_10_26_211823) do
   end
 
   create_table "usersearches", force: :cascade do |t|
+    t.string "status"
     t.string "description"
     t.string "count"
     t.integer "keyword_id"

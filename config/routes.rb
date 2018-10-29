@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'geomap/geocontinent'
-  get 'geomap/geocountries'
+  get 'geomap/heatmap'
   get 'usersearches/new'
   get 'usersearches/index'
   get 'usersearches/edit'
