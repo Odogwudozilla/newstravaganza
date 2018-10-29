@@ -5,16 +5,13 @@ class UsersearchesController < ApplicationController
         # GET /countries.json
         def index
           @usersearch = Usersearch.all
-          @keyword = Keyword.all
+        
 
           respond_to do |format|
             format.html { return @usersearch}
             format.json { render json: @usersearch.to_json }
           end
-          respond_to do |format|
-            format.html { return @keyword}
-            format.json { render json: @keyword.to_json }
-          end
+
         end
 
         # GET /countries/1
