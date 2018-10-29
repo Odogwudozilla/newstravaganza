@@ -5,9 +5,7 @@
   position: relative;
   flex: 1 0 auto;
 }
-.container-fluid {
-  margin: 10px 40px;
-}
+
 .card-img-top {
   img {
     height: 200px;
@@ -49,4 +47,8 @@
   transform: scale(1.1);
   -webkit-transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
   transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
+}
+
+.page-caption {
+  margin: 40px 10px;
 }

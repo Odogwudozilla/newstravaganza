@@ -1,10 +1,13 @@
-<% if top_headlines["articles"] != []  %>
+<div class="page-caption">
+  <h2>Top Searches From Around The World </h2>
+  <hr>
+</div>
 
 <div class="row">
-  <% for i in top_headlines["articles"][1..4] do %>
-  <% i["urlToImage"]? image = i["urlToImage"] : image = "news_2.jpg"  %>
+  <% for i in top_searches do %>
+  <% i["urlToImage"]? image = i["urlToImage"] : image = 'news_2.jpg'  %>
+  <%= link_to i['url']  do %>
   <div class="col-sm-6 col-lg-3 py-2 h-100">
-    <%= link_to i['url']  do %>
     <div class="card border-success hvr-bounce-in my-3">
       <div class="card-img-top img-fluid">
         <%= image_tag image_url(image), alt: "Edit Entry" %>
@@ -17,20 +20,15 @@
         </h5>
         <hr>
         <div class="news-author">
-          <h6>
-            <i>written by</i> <br>
+          <h6><i>written by</i>
           </h6>
           <h5>
-            <%= i["author"] ? i["author"].truncate(25) : "Unkown author" %>
+            <%= i["author"] ? i["author"] : "Unkown author" %>
           </h5>
         </div>
         <hr>
         <div class="news-source">
-          <h6>
-            <i>Source: </i>
-
-            <% source = i["source"] %>
-          </h6>
+          <% source = i["source"] %>
         </div>
         <div class="news-source-name">
           <%= source ? source["name"] : "Unkown" %>
@@ -47,11 +45,5 @@
   </div>
   <% end %>
 
-  <% end %>
-
-
-
-  <% else %>
-  <h5><i>No highlights available for this subject</i></h5>
   <% end %>
 </div>

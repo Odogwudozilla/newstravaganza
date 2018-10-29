@@ -1,33 +1,38 @@
+<div class="page-caption">
+        <h2>News from your search Keyword </h2>
+        <hr>
+</div>
 <div class="container">
-        <h1>News</h1>
         <% if @results != false && @results["status"] = "OK"  %>
 
-        <p> Search returned
-                <%= @results["totalResults"] %> results </p>
-
+        <p> Your search returned
+                <b>
+                        <%= @results["totalResults"] %></b> results </p>
 
         <h3>Top News for
                 <%= @keyword %>
         </h3>
 
         <%= render partial: 'news/top_stories', locals: { top_headlines: @top } %>
+        <hr>
 
-        <h3>Results</h3>
+        <h3>General Results</h3>
         <% for i in @results["articles"] do %>
+        <div class="search-results">
+                <%= link_to i['url'] do %>
+                <h5>
+                        <%= i['title'] %>
+                </h5>
+                <% end %>
+                <% source = i["source"] %>
+                <%= source["name"] %><br />
+                <%= i["author"] %><br />
+                <%= i["content"].truncate(200, omission: '... (read more)') %><br />
+                <br />
+                <% end %>
 
-        <%= link_to i['url'] do %>
-        <h5>
-                <%= i['title'] %>
-        </h5>
-        <% end %>
-        <% source = i["source"] %>
-        <%= source["name"] %><br />
-        <%= i["author"] %><br />
-        <%= i["content"] %><br />
-        <br />
-        <% end %>
-
-        <% else %>
-        <p>Search error </p>
-        <% end %>
+                <% else %>
+                <p>Search error </p>
+                <% end %>
+        </div>
 </div>
