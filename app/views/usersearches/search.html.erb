@@ -27,7 +27,7 @@
                 <% source = i["source"] %>
                 <%= source["name"] %><br />
                 <%= i["author"] %><br />
-                <%= i["content"].truncate(200, omission: '... (read more)') %><br />
+                <%= i["content"] ? i["content"].truncate(200, omission: '... (read more)') : "Content Unavailable" %><br />
                 <br />
                 <% end %>
 
