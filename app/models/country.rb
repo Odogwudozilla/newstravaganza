@@ -11,11 +11,11 @@ class Country < ApplicationRecord
 
   end
 
-  geocoded_by :name
-  before_save :geocode, if: -> {  self.name.present? } do
-  result = Geocoder.search(self.name)
-  self.latitude, self.longitude = result.lat, result.lng
-end
+#   geocoded_by :name
+#   before_save :geocode, if: -> {  self.name.present? } do
+#   result = Geocoder.search(self.name)
+#   self.latitude, self.longitude = result.lat, result.lng
+# end
 end
 
 

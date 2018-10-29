@@ -7,7 +7,7 @@ namespace :data do
   desc "Write to the categories table"
   task category_seed: :environment do
 
-    url = 'https://newsapi.org/v2/sources?apiKey=4b87c3dde8444f4e843dc41ab00f5c18'
+    url = 'https://newsapi.org/v2/sources?apiKey=01d52a3340e742b78df8736185a6087e'
     req = open(url)
     response_body = req.read
 
@@ -64,7 +64,7 @@ namespace :data do
   desc "Write to the Sources table"
   task sources_seed: :environment do
 
-    url = 'https://newsapi.org/v2/sources?apiKey=4b87c3dde8444f4e843dc41ab00f5c18'
+    url = 'https://newsapi.org/v2/sources?apiKey=01d52a3340e742b78df8736185a6087e'
     req = open(url)
     response_body = req.read
 
@@ -349,7 +349,7 @@ desc "Write to the Continents table"
   desc "Write to the languages table"
   task articles_seed: :environment do
 
-    url = 'https://newsapi.org/v2/top-headlines?language=en&pageSize=100&apiKey=4b87c3dde8444f4e843dc41ab00f5c18'
+    url = 'https://newsapi.org/v2/top-headlines?language=en&pageSize=100&apiKey=01d52a3340e742b78df8736185a6087e'
     req = open(url)
     response_body = req.read
 
@@ -413,7 +413,7 @@ desc "Write to the Continents table"
 
     all_keywords.each do |keyword|
 
-      urle = "https://newsapi.org/v2/everything?q=#{keyword.keyword}&from=#{from_week}&to=#{to_week}&pageSize=10&page=3&language=en&apiKey=4b87c3dde8444f4e843dc41ab00f5c18"
+      urle = "https://newsapi.org/v2/everything?q=#{keyword.keyword}&from=#{from_week}&to=#{to_week}&pageSize=10&page=3&language=en&apiKey=01d52a3340e742b78df8736185a6087e"
       req = open(urle)
       response_body = req.read
 
