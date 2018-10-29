@@ -5,3 +5,5 @@ class Keyword < ApplicationRecord
 
 
 end
+
+# Webhose (2018) Keyword [Source code]. https://webhose.io

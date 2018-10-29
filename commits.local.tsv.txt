@@ -1,3 +1,74 @@
+9168d9a	Damilola Ajaja	Mon Oct 29 16:06:39 2018	usersearch json
+5591b64	Damilola Ajaja	Mon Oct 29 15:46:45 2018	merge api key
+bef54ee	Damilola Ajaja	Mon Oct 29 15:43:57 2018	json files
+25ad5f8	Chidozie Nnachor	Mon Oct 29 15:42:13 2018	regenerating API key for seed files
+53bb04c	Damilola Ajaja	Mon Oct 29 15:23:39 2018	json file
+a1e805b	Damilola Ajaja	Mon Oct 29 11:29:59 2018	Merge branch 'master' of bitbucket.org:wawarbia/newscharts
+f8d2d67	Damilola Ajaja	Mon Oct 29 11:29:42 2018	json files
+6d94705	Mauludatu	Mon Oct 29 10:29:59 2018	Fixed Truncate
+be31b7d	Damilola Ajaja	Mon Oct 29 02:14:06 2018	heatmap
+b62d92d	Chidozie Nnachor	Mon Oct 29 02:09:53 2018	front-end
+0a26af1	Chidozie Nnachor	Sun Oct 28 23:16:30 2018	Hauwa conflict changes
+46dded4	Mauludatu	Sun Oct 28 23:09:19 2018	Hauwa merge conflict resolved Thank God
+0cdb5d2	Mauludatu	Sun Oct 28 22:21:48 2018	merge
+865b105	Damilola Ajaja	Sun Oct 28 20:46:35 2018	Merge branch 'master' of bitbucket.org:wawarbia/newscharts
+4f3f0d8	Damilola Ajaja	Sun Oct 28 20:45:38 2018	geocoder
+112a13b	Chidozie Nnachor	Sun Oct 28 12:52:49 2018	Testing cron job on heroku I
+b0cc0ed	Chidozie Nnachor	Sun Oct 28 12:48:31 2018	Testing cron job on heroku
+3f02f7e	Chidozie Nnachor	Sun Oct 28 12:06:51 2018	setting ffoter to bottom of page and interface modification
+d5f1442	Chidozie Nnachor	Sat Oct 27 12:05:52 2018	seeding heroku
+2f3ff18	Chidozie Nnachor	Sat Oct 27 11:50:12 2018	heroku db migrate error I
+65c85bf	Chidozie Nnachor	Sat Oct 27 11:45:36 2018	heroku db migrate error
+e1f31d0	Chidozie Nnachor	Sat Oct 27 11:34:38 2018	modifying the homepage plus testing seed on production
+50ddf7b	Mauludatu	Fri Oct 26 21:42:09 2018	Correction
+dc7ac34	Mauludatu	Fri Oct 26 21:09:20 2018	ff
+f4c5fb9	Mauludatu	Fri Oct 26 20:56:18 2018	b
+7f451b2	Mauludatu	Fri Oct 26 20:43:13 2018	GEO
+c5b132f	Damilola Ajaja	Fri Oct 26 20:36:14 2018	map controller
+53608cd	Mauludatu	Fri Oct 26 20:26:48 2018	Geo Pull
+c4eeb0d	Damilola Ajaja	Fri Oct 26 19:09:36 2018	Geo Search
+7401f6a	Damilola Ajaja	Fri Oct 26 19:05:00 2018	top stories
+4e11c5c	Damilola Ajaja	Fri Oct 26 18:58:32 2018	merge
+0f45133	Damilola Ajaja	Fri Oct 26 18:44:23 2018	mapmethods
+1ec9a94	Mauludatu	Fri Oct 26 18:34:39 2018	Fixed Usersearches Form
+3c61be9	Mauludatu	Fri Oct 26 18:19:34 2018	Fixing Models
+b3b08c6	Mauludatu	Fri Oct 26 17:49:06 2018	Fixed Bug in seed file
+e4d8f13	Mauludatu	Fri Oct 26 17:30:50 2018	News Sources Reference
+2c56f1d	Mauludatu	Fri Oct 26 17:26:46 2018	Added to searches
+69c0344	Chidozie Nnachor	Fri Oct 26 15:51:29 2018	merged conflicts from pull
+b01d436	Chidozie Nnachor	Fri Oct 26 15:48:20 2018	Articles seeded
+09bbc70	Mauludatu	Fri Oct 26 15:34:59 2018	Controller Concern 1
+f5f6f23	Mauludatu	Fri Oct 26 15:04:50 2018	cant seed
+c85587c	Damilola Ajaja	Fri Oct 26 14:38:42 2018	map
+ecade6c	Mauludatu	Fri Oct 26 14:37:23 2018	Did Some Stuff
+77a4a40	Mauludatu	Fri Oct 26 14:28:34 2018	Some more Stuff
+2594d04	Mauludatu	Fri Oct 26 14:26:52 2018	Did Some Stuff
+b53efbf	Chidozie Nnachor	Fri Oct 26 11:08:37 2018	modify many column and attributes to fit into the conceptual model
+fef9270	Damilola Ajaja	Fri Oct 26 10:24:38 2018	Merge branch 'mapcontroller'
+4f6d8c6	Chidozie Nnachor	Fri Oct 26 00:16:34 2018	change the column and attributes for usersearches
+352c2d3	Mauludatu	Thu Oct 25 22:11:57 2018	DB schema
+a75f8c9	Chidozie Nnachor	Thu Oct 25 20:13:51 2018	Pie chart for keywords and hit_rate
+1e37bfe	Damilola Ajaja	Thu Oct 25 14:28:25 2018	map
+441733f	Mauludatu	Wed Oct 24 23:22:03 2018	Highlights conflict
+065308b	Mauludatu	Wed Oct 24 23:17:25 2018	Before Merge Highlights
+19afbf3	Mauludatu	Wed Oct 24 23:12:46 2018	customized Highlights pages
+700993f	Chidozie Nnachor	Wed Oct 24 17:29:36 2018	Seeding the languages table
+96ebf3c	Chidozie Nnachor	Wed Oct 24 15:29:25 2018	merge conflict from seeding keywords
+67bad14	Chidozie Nnachor	Tue Oct 23 20:23:44 2018	seeding keywords to database
+35256ef	Chidozie Nnachor	Wed Oct 24 04:47:32 2018	schema
+0f54b50	Mauludatu	Tue Oct 23 22:58:45 2018	Generic top
+723143b	Damilola Ajaja	Tue Oct 23 17:34:23 2018	migration
+076ffae	Damilola Ajaja	Tue Oct 23 17:19:04 2018	Merge branch 'master' of bitbucket.org:wawarbia/newscharts
+3b11d71	MAULUDATU	Tue Oct 23 17:13:09 2018	Merge branch 'topstories'
+7f3cb3b	MAULUDATU	Tue Oct 23 17:12:54 2018	top
+f29783c	MAULUDATU	Tue Oct 23 17:04:29 2018	top stories
+8fdbaa9	Damilola Ajaja	Sun Oct 21 17:35:15 2018	Merge branch 'master' of bitbucket.org:wawarbia/newscharts
+d41f9fc	Damilola Ajaja	Sun Oct 21 17:33:06 2018	gemfile
+54cbec2	Chidozie Nnachor	Tue Oct 16 17:53:43 2018	Merge conflict
+0d7ab77	Chidozie Nnachor	Tue Oct 16 17:34:14 2018	Delete the show links
+c75a02a	MAULUDATU	Tue Oct 16 17:27:08 2018	Hauwa changed sources table to news_sources
+1cd0c2c	Chidozie Nnachor	Mon Oct 8 21:34:47 2018	Editing the view files for correct object references
+7b9baf7	Chidozie Nnachor	Mon Oct 8 19:07:35 2018	Generating the missing controllers for seeded models
 04eeb1a	Chidozie Nnachor	Mon Oct 8 00:23:44 2018	Seeding the Continents and Countries tables
 98c1a64	Chidozie Nnachor	Sun Oct 7 17:33:34 2018	Correcting the identitiy column name (sources)
 2261ac3	Chidozie Nnachor	Sun Oct 7 15:11:41 2018	Rake for seeding the Categories and Sources table from API

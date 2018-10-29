@@ -50,3 +50,5 @@ WillPaginate.per_page = 20
 
 
 end
+
+# NewsAPI (2018) News API (Version 2.0) [Source code]. https://newsapi.org
