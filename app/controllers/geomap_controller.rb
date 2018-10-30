@@ -9,6 +9,7 @@ class GeomapController < ApplicationController
   end
 
   def geocountries
+   @countries__json = get_countries__json
   end
 
   def heatmap
