@@ -9,4 +9,10 @@ class NewsController < ApplicationController
                 @top_searches = get_top_search_news
         end
 
+
+        def more_news
+
+                @result = get_top_news
+                
+        end
 end

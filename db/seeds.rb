@@ -80,36 +80,23 @@ def seed_countries
     serialized_object = JSON.parse(response_body)
 
     # iterate through API object and pull values into an array
-    serialized_object.each do | lang |
+    serialized_object.each do |lang|
+      
 
-      lang.each do |dotem|
-
-         #strip out the language name
-        if dotem[0] == "English"
-          @lang_name = dotem[1]
-
-          #strip out the corrsponding language code
-        elsif dotem[0] == "alpha2"
-         @lang_code = dotem[1]
-
-          #skip invalid values
-        else
-          puts "invalid value skipped"
-
-        end
-
-        # insert item to db
+      lang_name = lang["English"] 
+      lang_code = lang["alpha2"]
+      
+    
+        # # insert item to db
         Language.create!(
-          name: @lang_name,
-          code: @lang_code
+          name: lang_name,
+          code: lang_code
 
-        )
+         )
 
+      
 
-
-      end
-
-      puts "Language name \"#{@lang_name}\" created with code as \"#{@lang_code}\"\n\n"
+      puts "Language name \"#{lang_name}\" created with code as \"#{lang_code}\"\n\n"
       puts "___________________"
     end
 

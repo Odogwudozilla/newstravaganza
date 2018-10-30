@@ -1,0 +1,28 @@
+<div class="container">
+
+  <% if @result["articles"] != []  %>
+  <h3>More Recommended News</h3>
+  <% for i in @result["articles"] do %>
+  <div class="search-results">
+    <%= link_to i['url'] do %>
+    <h4>
+      <%= i['title'] %>
+    </h4>
+    <% end %>
+    <h6>
+      <% source = i["source"] %>
+
+      <%= source["name"] %> |
+      <%= i["author"] %><br />
+    </h6>
+    <h5>
+      <%= i["content"] ? i["content"].truncate(200, omission: '... (click the link to read more)') : "Content Unavailable" %>
+    </h5>
+    <hr>
+  </div>
+  <% end %>
+
+  <% else %>
+  <p>Search error </p>
+  <% end %>
+</div>

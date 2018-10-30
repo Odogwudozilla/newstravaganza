@@ -3,9 +3,15 @@
   <hr>
 </div>
 <div class="col-lg-10 col-md-10">
+  <div class="recomended-news">
 
-  <%= render partial: 'top_stories', locals: { top_headlines: @top_headlines } %>
-  <%= render partial: 'top_searches', locals: { top_searches: @top_searches } %>
+    <%= render partial: 'top_stories', locals: { top_headlines: @top_headlines } %>
+    <hr>
+  </div>
+  <div class="top-searches">
+
+    <%= render partial: 'top_searches', locals: { top_searches: @top_searches } %>
+  </div>
 
 </div>
 <%= render partial: 'most_searched', locals: { top_keywords: @top_keywords } %>

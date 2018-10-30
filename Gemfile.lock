@@ -293,7 +293,6 @@ DEPENDENCIES
   news-api
   nokogiri (~> 1.6, >= 1.6.8)
   pg (~> 1.1.3)
-  popper_js (~> 1.14.3)
   puma (~> 3.11)
   rails (~> 5.2.1)
   rest-client

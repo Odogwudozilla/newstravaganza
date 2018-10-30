@@ -2,9 +2,9 @@
   <nav class="navbar navbar-inverse fixed-top navbar-expand-lg">
 
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">
-        <img src="/assets/images/index.png" width="30" height="30" class="d-inline-block align-top" alt="">
-        Newscharts
+      <a class="navbar-brand" href="/">
+
+        <%= image_tag("index.png", :alt => "Newscharts brand", :class => "d-inline-block align-top" ) %>Newscharts
       </a>
     </div>
     <ul class="nav navbar-nav">
@@ -13,6 +13,9 @@
       </li>
       <li>
         <%=link_to 'News Statistics', statistics_index_path, :class => " nav-item" %>
+      </li>
+      <li>
+        <%= link_to 'Geo Countries', geomap_geocountries_path, :class => " nav-item" %>
       </li>
       <li class="">
       </li>
@@ -38,7 +41,7 @@
       <div class="btn ">
         <%= link_to 'Advanced Search', new_usersearch_path, :class => "btn btn-success" %>
       </div>
-      <%= link_to 'Geo Search', geomap_geocontinent_path, :class => " btn btn-success" %>
+
     </div>
 
   </nav>

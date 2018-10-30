@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'geomap/geocontinent'
   get 'geomap/heatmap'
   get 'geomap/geocountries'
 
@@ -12,6 +11,7 @@ Rails.application.routes.draw do
   get 'usersearches/show'
   get 'usersearches/create'
   get 'usersearches/search'
+  get 'news/more_news'
 
   resources :countries
   resources :continents

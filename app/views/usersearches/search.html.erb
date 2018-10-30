@@ -20,19 +20,24 @@
         <% for i in @results["articles"] do %>
         <div class="search-results">
                 <%= link_to i['url'] do %>
-                <h5>
+                <h4>
                         <%= i['title'] %>
-                </h5>
+                </h4>
                 <% end %>
-                <% source = i["source"] %>
-                <%= source["name"] %><br />
-                <%= i["author"] %><br />
-                <%= i["content"] ? i["content"].truncate(200, omission: '... (read more)') : "Content Unavailable" %><br />
-                <br />
-                <% end %>
+                <h6>
+                        <% source = i["source"] %>
 
-                <% else %>
-                <p>Search error </p>
-                <% end %>
+                        <%= source["name"] %> |
+                        <%= i["author"] %><br />
+                </h6>
+                <h5>
+                        <%= i["content"] ? i["content"].truncate(200, omission: '... (click the link to read more)') : "Content Unavailable" %>
+                </h5>
+                <hr>
         </div>
+        <% end %>
+
+        <% else %>
+        <p>Search error </p>
+        <% end %>
 </div>

@@ -10,7 +10,7 @@ gem 'autoprefixer-rails', '~> 9.3', '>= 9.3.1'
 
 
 gem 'mini_racer', platforms: :ruby
-gem 'popper_js', '~> 1.14.3'
+# gem 'popper_js', '~> 1.14.3'
 gem 'jquery-rails' , '~> 4.3', '>= 4.3.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'

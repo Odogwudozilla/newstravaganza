@@ -14,7 +14,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap
-//= require popper
 //= require rails-ujs
 //= require activestorage
 //= require highcharts
