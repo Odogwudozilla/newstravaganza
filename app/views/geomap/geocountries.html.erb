@@ -76,12 +76,28 @@
     // state polygons only need to be loaded once, do them now
     loadMapShapes();
 
+
   }
+
+
+
+
 
   /** Loads the state boundary polygons from a GeoJSON source. */
   function loadMapShapes() {
     // load US state outline polygons from a GeoJson file
-    map.data.loadGeoJson('https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json', { idPropertyName: 'name' });
+    var reader = map.data.loadGeoJson('https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json', {
+      idPropertyName: 'name',
+      style: function (obj) {
+        if (obj.getData().properties.name === "Antarctica") {
+
+          obj.forEach(function (polygon) {
+            polygon.setNorthPoleCovering(true);
+            polygon.setStyle({ fillColor: 'blue' });
+          });
+        }
+      }
+    });
 
 
     // wait for the request to complete by listening for the first feature to be
@@ -90,7 +106,11 @@
       google.maps.event.trigger(document.getElementById('news-variable'),
         'change');
     });
+
+
   }
+
+
 
   /**
    * Loads the census data from a simulated API call to the US Census API.
@@ -171,6 +191,7 @@
    * @param {google.maps.Data.Feature} feature
    */
   function styleFeature(feature) {
+
     var low = [5, 69, 54];  // color of smallest datum
     var high = [151, 83, 34];   // color of largest datum
 
@@ -196,14 +217,26 @@
       outlineWeight = zIndex = 2;
     }
 
-    return {
-      strokeWeight: outlineWeight,
-      strokeColor: '#fff',
-      zIndex: zIndex,
-      fillColor: 'hsl(' + color[0] + ',' + color[1] + '%,' + color[2] + '%)',
-      fillOpacity: 0.75,
-      visible: showRow
-    };
+
+    if ((feature.idPropertyName == "Antarctica") && (feature.idPropertyName == undefined)) {
+      return {
+        strokeWeight: outlineWeight,
+        strokeColor: '#fff',
+        zIndex: zIndex,
+        fillColor: 'hsl(187, 100%, 46%)',
+        fillOpacity: 0.75,
+        visible: showRow
+      };
+    } else {
+      return {
+        strokeWeight: outlineWeight,
+        strokeColor: '#fff',
+        zIndex: zIndex,
+        fillColor: 'hsl(' + color[0] + ',' + color[1] + '%,' + color[2] + '%)',
+        fillOpacity: 0.75,
+        visible: showRow
+      };
+    }
   }
 
   /**

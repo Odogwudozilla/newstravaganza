@@ -88,4 +88,6 @@ def get_countries__json
   end
 
 
-  end
+end
+
+# NewsAPI (2018) News API (Version 2.0) [Source code]. https://newsapi.org
